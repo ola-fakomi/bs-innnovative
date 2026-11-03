@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Bluespectrum Innovative Ltd.</title>
+  <meta name="description" content="Comprehensive innovation services across research, development, commercialization, and enterprise transformation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html" aria-label="Bluespectrum Innovative — Home">
+        <img src="assets/logo.png" alt="Bluespectrum Innovative" height="40" />
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active" aria-current="page">Services</a></li>
+          <li><a href="foundation.html">Foundation</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+      <a href="contact.html" class="nav-cta">Get in touch</a>
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <rect y="4"  width="24" height="2" rx="1" fill="currentColor"/>
+          <rect y="11" width="24" height="2" rx="1" fill="currentColor"/>
+          <rect y="18" width="24" height="2" rx="1" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Mobile Menu ────────────────────────────────────────── -->
+  <dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation menu">
+    <button class="mobile-menu-close" aria-label="Close navigation menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <nav aria-label="Mobile navigation">
+      <ul role="list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html" aria-current="page">Services</a></li>
+        <li><a href="foundation.html">Foundation</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </dialog>
+
+  <main>
+
+    <!-- ── 1. Hero ─────────────────────────────────────────────── -->
+    <section class="page-hero services-hero" aria-label="Services hero">
+      <div class="page-hero-inner">
+        <div class="page-hero-text">
+          <div class="eyebrow-tag">Our Services</div>
+          <h1 class="page-hero-heading reveal-text">Our Capabilities</h1>
+          <p class="page-hero-desc reveal-text">Comprehensive innovation services across research, development, commercialization, and enterprise transformation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 2. Service Cards ────────────────────────────────────── -->
+    <section class="service-editorial-section" aria-labelledby="capabilities-heading">
+      <h2 class="sr-only" id="capabilities-heading">Our Capabilities</h2>
+
+      <!-- Card 1: Research-Driven Product Innovation — light -->
+      <article class="svc-card svc-card--light" aria-labelledby="svc1-heading">
+        <div class="svc-card-inner svc-card-inner--img-left">
+          <div class="svc-card-image">
+            <img src="assets/service1-research.jpg" alt="Research laboratory — microscope and scientific equipment" loading="lazy" />
+          </div>
+          <div class="svc-card-body">
+            <span class="svc-card-category">01. Trade &amp; Distribution</span>
+            <div class="svc-card-content">
+              <h3 class="svc-card-heading reveal-text" id="svc1-heading">Research-Driven<br>Product Innovation</h3>
+              <p class="svc-card-para">We conduct applied research and experimental development to create new technologies, products, and systems.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: Reimagining Business Through Innovation — dark -->
+      <article class="svc-card svc-card--dark" aria-labelledby="svc2-heading">
+        <div class="svc-card-inner svc-card-inner--img-right">
+          <div class="svc-card-body">
+            <span class="svc-card-category">02. Innovation Strategy &amp; Digital Transformation</span>
+            <div class="svc-card-content">
+              <h3 class="svc-card-heading reveal-text" id="svc2-heading">Reimagining Business<br>Through Innovation</h3>
+              <p class="svc-card-para">We support enterprises in designing innovation frameworks, digitizing operations, and building future-ready business models.</p>
+            </div>
+          </div>
+          <div class="svc-card-image">
+            <img src="assets/service2-business.jpg" alt="Business digital transformation — laptop and strategy session" loading="lazy" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Protecting and Scaling Innovation — light -->
+      <article class="svc-card svc-card--light" aria-labelledby="svc3-heading">
+        <div class="svc-card-inner svc-card-inner--img-left">
+          <div class="svc-card-image">
+            <img src="assets/service3-ip.jpg" alt="Intellectual property and technology commercialization" loading="lazy" />
+          </div>
+          <div class="svc-card-body">
+            <span class="svc-card-category">03. Intellectual Property &amp; Commercialization</span>
+            <div class="svc-card-content">
+              <h3 class="svc-card-heading reveal-text" id="svc3-heading">Protecting and<br>Scaling Innovation</h3>
+              <p class="svc-card-para">We create and manage intellectual property assets and structure pathways for commercialization and licensing.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4: Ecosystem Development and Global Reach — dark -->
+      <article class="svc-card svc-card--dark" aria-labelledby="svc4-heading">
+        <div class="svc-card-inner svc-card-inner--img-right">
+          <div class="svc-card-body">
+            <span class="svc-card-category">04. Partnerships &amp; Expansion</span>
+            <div class="svc-card-content">
+              <h3 class="svc-card-heading reveal-text" id="svc4-heading">Ecosystem Development<br>and Global Reach</h3>
+              <p class="svc-card-para">We collaborate with universities, research institutes, incubators, investors, and enterprises to accelerate technology deployment and expansion.</p>
+            </div>
+          </div>
+          <div class="svc-card-image">
+            <img src="assets/service4-ecosystem.png" alt="Ecosystem development — network and global partnerships" loading="lazy" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5: Building Innovation Capacity — light -->
+      <article class="svc-card svc-card--light" aria-labelledby="svc5-heading">
+        <div class="svc-card-inner svc-card-inner--img-left">
+          <div class="svc-card-image">
+            <img src="assets/service5-training.jpg" alt="Innovation training and capacity building programs" loading="lazy" />
+          </div>
+          <div class="svc-card-body">
+            <span class="svc-card-category">05. Training &amp; Innovation Programs</span>
+            <div class="svc-card-content">
+              <h3 class="svc-card-heading reveal-text" id="svc5-heading">Building<br>Innovation Capacity</h3>
+              <p class="svc-card-para">We organize and participate in seminars, workshops, conferences, and exhibitions that foster entrepreneurship and technological advancement.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6: Technology Import, Export & Distribution — dark -->
+      <article class="svc-card svc-card--dark" aria-labelledby="svc6-heading">
+        <div class="svc-card-inner svc-card-inner--img-right">
+          <div class="svc-card-body">
+            <span class="svc-card-category">06. Trade &amp; Distribution</span>
+            <div class="svc-card-content">
+              <h3 class="svc-card-heading reveal-text" id="svc6-heading">Technology Import,<br>Export &amp; Distribution</h3>
+              <p class="svc-card-para">We facilitate the responsible importation, exportation, and distribution of innovative products, machinery, software, and technical equipment relevant to research and enterprise development.</p>
+            </div>
+          </div>
+          <div class="svc-card-image">
+            <img src="assets/service6-trade.png" alt="Technology trade — circuit board and distribution network" loading="lazy" />
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- ── 3. Final CTA ───────────────────────────────────────── -->
+    <section class="cta-final" aria-labelledby="cta-heading">
+      <div class="cta-inner">
+        <div class="cta-text">
+          <div class="eyebrow-tag" role="text">Get started</div>
+          <h2 class="cta-heading reveal-text" id="cta-heading">Let's Build&nbsp;<br>the Future Together</h2>
+          <p>Whether you are an enterprise seeking transformation, a researcher with breakthrough ideas, or an investor looking for high-impact innovation, Bluespectrum Innovative is ready to collaborate.</p>
+          <a href="contact.html" class="btn btn-secondary-cta">Start a Conversation</a>
+        </div>
+        <div class="cta-photo">
+          <img src="assets/cta-photo.png" alt="Bluespectrum Innovative — collaboration" />
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+
+      <div class="footer-logo-row">
+        <a href="index.html" aria-label="Bluespectrum Innovative — Home">
+          <img src="assets/logo.png" alt="Bluespectrum Innovative" height="72" class="footer-logo" />
+        </a>
+      </div>
+
+      <div class="footer-columns">
+
+        <div class="footer-col">
+          <p class="footer-label">CONTACT</p>
+          <div class="footer-contact-item">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+              <rect width="48" height="48" rx="12" fill="rgba(255,255,255,0.06)"/>
+              <path d="M15 17h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H15a1 1 0 0 1-1-1V18a1 1 0 0 1 1-1z" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" fill="none"/>
+              <path d="M14 18l10 8 10-8" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <a href="tel:+27630224992" class="footer-contact-link">+27630224992 (South Africa)</a>
+              <a href="tel:+2349066534722" class="footer-contact-link">+2349066534722 (Nigeria)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-label">EMAIL</p>
+          <div class="footer-contact-item">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+              <rect width="48" height="48" rx="12" fill="rgba(255,255,255,0.06)"/>
+              <path d="M15 17h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H15a1 1 0 0 1-1-1V18a1 1 0 0 1 1-1z" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" fill="none"/>
+              <path d="M14 18l10 8 10-8" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <a href="mailto:info@bluespectruminnovative.com" class="footer-contact-link">info@bluespectruminnovative.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-label">OFFICE LOCATION</p>
+          <div class="footer-contact-item">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+              <rect width="48" height="48" rx="12" fill="rgba(255,255,255,0.06)"/>
+              <path d="M24 13C20.686 13 18 15.686 18 19C18 24.5 24 34 24 34C24 34 30 24.5 30 19C30 15.686 27.314 13 24 13Z" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" fill="none"/>
+              <circle cx="24" cy="19" r="2.5" stroke="rgba(207,212,220,0.7)" stroke-width="1.5"/>
+            </svg>
+            <div>
+              <p class="footer-contact-text">4a, Chief Adebisi Odumade Close, Off Trinity Street Igbogbo, Ikorodu, Lagos, Nigeria.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <p class="footer-label">OUR SUBSIDIARY</p>
+          <div class="footer-contact-item footer-subsidiary-row">
+            <img src="assets/subsidiary-logo.png" alt="Bluespectrum Chemical Labs" class="subsidiary-logo" />
+            <a href="https://www.bluespectrumchemicallabs.com/" class="footer-contact-link" target="_blank" rel="noopener noreferrer">Bluespectrum Chemical Labs</a>
+          </div>
+
+          <div class="footer-social">
+            <p class="footer-label">FIND US ON:</p>
+            <div class="footer-social-icons">
+              <div class="social-group">
+                <p class="footer-label social-platform-label">TIKTOK</p>
+                <a href="https://www.tiktok.com/@bluespectrum_inno" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.07a4.85 4.85 0 01-1-.38z"/></svg>
+                </a>
+              </div>
+              <div class="social-group">
+                <p class="footer-label social-platform-label">X (TWITTER)</p>
+                <a href="https://x.com/_bluespectrum" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /footer-columns -->
+
+      <div class="footer-bottom">
+        <p>© 2026 Bluespectrum Innovative. All rights reserved.</p>
+      </div>
+
+    </div><!-- /footer-inner -->
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
