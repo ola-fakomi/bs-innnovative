@@ -19,8 +19,9 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-family: var(--f-medium);
-      font-size: 14px;
+      font-family: 'Gilroy-Medium', 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
       color: var(--black-subtext);
       margin-bottom: 20px;
     }
@@ -47,15 +48,17 @@
       overflow: hidden;
     }
     .ev-hero-body {
-      flex: 1;
+      flex: 1 1 0;
       min-height: 0;
+      max-height: 100%;
+      overflow: hidden;
       display: grid;
       grid-template-columns: 1.15fr 1fr;
       align-items: stretch;
       gap: 0;
-      max-width: 1280px;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: calc(var(--nav-height) + 44px) var(--gutter) 48px;
+      padding: 0 var(--gutter);
       width: 100%;
       box-sizing: border-box;
       position: relative;
@@ -65,7 +68,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 64px;
+      gap: 140px;
       height: 100%;
     }
     .ev-hero-subtitle {
@@ -99,14 +102,15 @@
     .btn-ev-wl {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       gap: 4px;
       height: 48px;
       padding: 0 20px;
       font-family: var(--f-body);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0;
       text-transform: uppercase;
       line-height: 1;
       color: #0D0C3F;
@@ -132,15 +136,16 @@
     .btn-ev-wl-arr {
       display: inline-flex; align-items: center; justify-content: center;
       flex-shrink: 0;
+      line-height: 0;
     }
     .btn-ev-sp {
       display: inline-flex;
       align-items: center;
       position: relative;
       font-family: var(--f-body);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0;
       text-transform: uppercase;
       line-height: 1;
       color: rgba(255,255,255,0.65);
@@ -181,55 +186,78 @@
       margin-right: -32px;
       display: block;
     }
-    /* Vignette overlay — fades white edges of the image into the dark hero bg */
-    .ev-hero-art::after {
-      content: '';
-      position: absolute;
-      inset: -5% -5% -5% -20%;
-      background: radial-gradient(ellipse at 58% 50%, transparent 32%, rgba(0,4,18,0.82) 65%, rgba(0,4,18,0.98) 82%);
-      pointer-events: none;
-    }
 
     /* Countdown */
     .ev-countdown-wrap {
-      display: none;
+      display: flex;
+      justify-content: center;
+      padding: 0 var(--gutter);
+      position: relative;
+      z-index: 10;
+      transform: translateY(-50%);
     }
     .ev-countdown {
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.06);
-      border-radius: 16px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+      position: relative;
+      background: linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 33%, #FFFFFF 66%, #F9FDFF 100%);
+      border: none;
+      border-radius: 24px;
       display: grid;
       grid-template-columns: repeat(4,1fr);
+      align-items: center;
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
+      height: 92px;
       overflow: hidden;
     }
-    .ev-cd-unit { padding: 22px 10px; text-align: center; position: relative; }
-    .ev-cd-unit + .ev-cd-unit::before {
+    .ev-countdown::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: linear-gradient(to bottom, rgba(13,12,63,0.08) 0%, rgba(13,12,63,0.08) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .ev-cd-unit {
+      padding: 0 24px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .ev-cd-unit + .ev-cd-unit::after {
       content: ''; position: absolute;
       left: 0; top: 20%; height: 60%; width: 1px;
-      background: rgba(0,0,0,0.1);
+      background: rgba(13,12,63,0.1);
     }
     .ev-cd-num {
       display: block;
-      font-family: var(--f-bold);
-      font-size: clamp(28px, 4vw, 42px);
-      color: #111; line-height: 1; margin-bottom: 5px;
+      font-family: 'Gilroy-Bold', 'Inter', system-ui, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: #050505;
+      line-height: 1;
     }
     .ev-cd-label {
       display: block;
-      font-family: var(--f-medium);
-      font-size: 12px;
-      letter-spacing: 0.03em;
-      color: #aaa;
+      font-family: var(--f-body);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: #9F9F9F;
       text-transform: capitalize;
     }
 
     /* ── 2. About ──────────────────────────────────── */
     .ev-about {
-      background: #fff;
-      padding: 96px var(--gutter) 80px;
+      background: linear-gradient(to bottom, #FFFFFF 0%, #F9F9FA 100%);
+      padding: 64px var(--gutter) 128px;
       text-align: center;
     }
     .ev-about-inner { max-width: 720px; margin: 0 auto; }
@@ -248,10 +276,10 @@
     /* ── 3. Locations ──────────────────────────────── */
     .ev-locations {
       background: #fff;
-      padding: 16px var(--gutter) 96px;
+      padding: 80px var(--gutter);
       border-top: 1px solid var(--light-border);
     }
-    .ev-locations-inner { max-width: 1200px; margin: 0 auto; }
+    .ev-locations-inner { max-width: 1440px; margin: 0 auto; }
     .ev-locations h2 {
       font-family: 'Gilroy-SemiBold', 'Inter', system-ui, sans-serif;
       font-size: 48px; font-weight: 400;
@@ -262,25 +290,23 @@
     .ev-loc-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
+      gap: 12px;
     }
     .ev-loc-card {
-      border-radius: 20px;
+      border-radius: 32px;
       overflow: hidden;
       position: relative;
-      min-height: 400px;
+      aspect-ratio: 1108 / 1080;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       padding: 30px 30px 0;
     }
     .ev-loc-card--ng {
-      background: linear-gradient(175deg, rgba(20,60,160,0.72) 0%, rgba(30,90,200,0.38) 50%, rgba(60,140,220,0.08) 100%),
-                  url('Images/Event/Location_Nigeria.png') center/cover no-repeat;
+      background: url('Images/Event/Location_Nigeria.png') center/cover no-repeat;
     }
     .ev-loc-card--sa {
-      background: linear-gradient(175deg, rgba(20,60,160,0.68) 0%, rgba(30,90,200,0.35) 50%, rgba(60,140,220,0.06) 100%),
-                  url('Images/Event/Location_SouthAfrica.png') center/cover no-repeat;
+      background: url('Images/Event/Location_SouthAfrica.png') center/cover no-repeat;
     }
     .ev-loc-content { position: relative; z-index: 2; }
     .ev-loc-card h3 {
@@ -307,7 +333,7 @@
       padding: 80px var(--gutter);
       border-top: 1px solid var(--light-border);
     }
-    .ev-expect-inner { max-width: 1200px; margin: 0 auto; }
+    .ev-expect-inner { max-width: 1440px; margin: 0 auto; }
     .ev-expect h2 {
       font-family: 'Gilroy-SemiBold', 'Inter', system-ui, sans-serif;
       font-size: 48px; font-weight: 400;
@@ -382,7 +408,7 @@
       padding: 80px var(--gutter);
       border-top: 1px solid var(--light-border);
     }
-    .ev-abstract-inner { max-width: 1200px; margin: 0 auto; }
+    .ev-abstract-inner { max-width: 1440px; margin: 0 auto; }
     .ev-abstract > .ev-abstract-inner > h2 {
       font-family: 'Gilroy-SemiBold', 'Inter', system-ui, sans-serif;
       font-size: 48px; font-weight: 400;
@@ -549,7 +575,7 @@
       background: radial-gradient(ellipse at 50% 110%, rgba(10,28,110,0.55) 0%, rgba(2,8,24,0.6) 60%);
     }
     .ev-onsite-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: 1440px; margin: 0 auto;
       position: relative; z-index: 2;
       display: grid; grid-template-columns: 200px 1fr;
       gap: 48px; align-items: center;
@@ -574,7 +600,7 @@
       border-top: 1px solid var(--light-border);
     }
     .ev-register-inner {
-      max-width: 1200px; margin: 0 auto;
+      max-width: 1440px; margin: 0 auto;
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 60px; align-items: center;
     }
@@ -620,7 +646,7 @@
       background: linear-gradient(to bottom, #09112e 0%, #040b1b 100%);
       padding: 60px var(--gutter) 36px;
     }
-    .ev-footer-inner { max-width: 1200px; margin: 0 auto; }
+    .ev-footer-inner { max-width: 1440px; margin: 0 auto; }
     .ev-footer-logo {
       display: flex; align-items: center; justify-content: center;
       gap: 16px; margin-bottom: 44px;
@@ -770,29 +796,31 @@
 
     </section>
 
+    <!-- ── Countdown ─────────────────────────────────────────── -->
+    <div class="ev-countdown-wrap">
+      <div class="ev-countdown" role="timer" aria-label="Conference countdown">
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-days">77</span>
+          <span class="ev-cd-label">Days</span>
+        </div>
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-hrs">00</span>
+          <span class="ev-cd-label">Hrs</span>
+        </div>
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-min">00</span>
+          <span class="ev-cd-label">Min</span>
+        </div>
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-sec">00</span>
+          <span class="ev-cd-label">Sec</span>
+        </div>
+      </div>
+    </div>
+
     <!-- ── 2. About the Conference ──────────────────────────── -->
     <section class="ev-about" aria-labelledby="ev-about-heading">
       <div class="ev-about-inner">
-        <div class="ev-countdown-wrap">
-          <div class="ev-countdown" role="timer" aria-label="Conference countdown">
-            <div class="ev-cd-unit">
-              <span class="ev-cd-num" id="cd-days">77</span>
-              <span class="ev-cd-label">Days</span>
-            </div>
-            <div class="ev-cd-unit">
-              <span class="ev-cd-num" id="cd-hrs">00</span>
-              <span class="ev-cd-label">Hrs</span>
-            </div>
-            <div class="ev-cd-unit">
-              <span class="ev-cd-num" id="cd-min">00</span>
-              <span class="ev-cd-label">Min</span>
-            </div>
-            <div class="ev-cd-unit">
-              <span class="ev-cd-num" id="cd-sec">00</span>
-              <span class="ev-cd-label">Sec</span>
-            </div>
-          </div>
-        </div>
         <div class="ev-label ev-label--center" role="text">About the Conference</div>
         <h2 id="ev-about-heading">Innovation, Sustainability<br>&amp; Waste Repurposing</h2>
         <p>The primary focus of the annual conference is Innovation, Sustainability, and Waste Repurposing. These interconnected areas have received increasing attention globally across academia, government, and the private sector, reflecting growing recognition of the need for approaches that support environmental sustainability and contribute to the achievement of the Sustainable Development Goals.</p>

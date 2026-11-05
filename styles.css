@@ -39,6 +39,97 @@
   font-weight: 400; font-style: normal; font-display: swap;
 }
 
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-Thin.ttf') format('truetype');
+  font-weight: 100; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-ThinItalic.ttf') format('truetype');
+  font-weight: 100; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-ExtraLight.ttf') format('truetype');
+  font-weight: 200; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-Light.ttf') format('truetype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-LightItalic.ttf') format('truetype');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-Regular.ttf') format('truetype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-Italic.ttf') format('truetype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-Medium.ttf') format('truetype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-MediumItalic.ttf') format('truetype');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-SemiBold.ttf') format('truetype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-Bold.ttf') format('truetype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-BoldItalic.ttf') format('truetype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-ExtraBold.ttf') format('truetype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-Black.ttf') format('truetype');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Aventa';
+  src: url('assets/fonts/Aventa-BlackItalic.ttf') format('truetype');
+  font-weight: 900; font-style: italic; font-display: swap;
+}
+
 /* ── CSS Custom Properties ──────────────────────────────────────── */
 :root {
   /* Font stacks — update when custom fonts are provided */
@@ -191,7 +282,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: space-between;
   height: 100%;
   padding: 0 var(--gutter);
-  max-width: 1296px;
+  max-width: 1440px;
   margin: 0 auto;
   position: relative;
 }
@@ -332,7 +423,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   gap: 32px;
   padding: calc(var(--nav-height) + 56px) var(--gutter) 48px;
-  max-width: 1200px;
+  max-width: 1440px;
   width: 100%;
   align-self: center;
 }
@@ -388,7 +479,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   overflow: hidden;
   align-self: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin-top: 16px;
 }
 
@@ -453,7 +544,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 .research-heading {
@@ -486,7 +577,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   gap: 24px;
   padding: 0 var(--gutter);
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto 24px;
 }
 
@@ -573,7 +664,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   flex-direction: column;
   gap: 24px;
   padding: 0 var(--gutter);
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto 32px;
 }
 
@@ -582,7 +673,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   grid-template-columns: 1fr;
   gap: 12px;
   padding: 0 var(--gutter) 64px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -631,7 +722,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .vision-inner {
   padding: 0 var(--gutter);
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -680,7 +771,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .cta-inner {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -726,7 +817,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .footer-inner {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 64px var(--gutter) 0;
   display: flex;
@@ -1086,7 +1177,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: calc(1200px + var(--gutter) * 2);
+  max-width: calc(1440px + var(--gutter) * 2);
   margin: 0 auto;
   padding: 56px var(--gutter) 64px;
   gap: 32px;
@@ -1208,7 +1299,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   gap: 24px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 .drives-header {
@@ -1377,7 +1468,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .svc-card {
   border-radius: 24px;
   overflow: hidden;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   width: 100%;
 }
@@ -1447,7 +1538,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 .contact-item {
@@ -1503,7 +1594,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 .map-wrapper {
@@ -1655,7 +1746,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   flex-direction: column;
   gap: 64px;
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 .impact-stories {
