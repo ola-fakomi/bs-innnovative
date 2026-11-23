@@ -132,30 +132,34 @@
 
 /* ── CSS Custom Properties ──────────────────────────────────────── */
 :root {
-  /* Font stacks — update when custom fonts are provided */
-  --f-thin:      'Gilroy-Thin',         'Inter', system-ui, sans-serif;
-  --f-semibold:  'Gilroy-Medium',       'Inter', system-ui, sans-serif;
-  --f-bold:      'Gilroy-Bold',         'Inter', system-ui, sans-serif;
-  --f-medium:    'Gilroy-Regular',      'Inter', system-ui, sans-serif;
-  --f-italic:    'Gilroy-RegularItalic','Inter', system-ui, sans-serif;
-  --f-body:      'Aventa',              'Georgia', serif;
+  /* ── Font stack aliases (point to tokens.css --font-* vars) ─────
+     Always use these aliases in CSS — never hardcode font names.   */
+  --f-thin:      'Gilroy-Thin',          'Inter', system-ui, sans-serif;
+  --f-semibold:  var(--font-semibold);   /* Gilroy-SemiBold */
+  --f-bold:      var(--font-heading);    /* Gilroy-Bold     */
+  --f-medium:    var(--font-medium);     /* Gilroy-Medium   */
+  --f-italic:    'Gilroy-RegularItalic', 'Inter', system-ui, sans-serif;
+  --f-body:      var(--font-body);       /* Aventa          */
 
-  /* Design tokens */
-  --cyan:          rgb(66, 200, 244);
-  --navy:          rgb(13, 12, 63);
-  --near-black:    rgb(4, 4, 4);
-  --dark-blue:     rgb(0, 35, 71);
-  --white:         rgb(255, 255, 255);
-  --gray-text:     rgb(219, 218, 255);
-  --black-subtext: rgb(74, 84, 83);
-  --light-border:  rgb(227, 227, 227);
-  --approach-bg:   rgb(249, 250, 251);
-  --service-para:  rgb(218, 218, 255);
-  --footer-label:  rgb(144, 143, 167);
-  --footer-body:   rgb(207, 212, 220);
-  --eyebrow-muted: rgb(102, 112, 133);
+  /* ── Color aliases (point to tokens.css --color-* vars) ─────────
+     Keeps existing code working; new code should use --color-* directly. */
+  --cyan:          var(--color-cyan);        /* #42c8f4 */
+  --navy:          var(--color-navy);        /* #0d0c3f */
+  --near-black:    var(--color-near-black);  /* #050505 */
+  --dark-blue:     var(--color-primary);     /* #002347 */
+  --white:         var(--color-white);       /* #ffffff */
+  --gray-text:     var(--color-gray-text);   /* #dbdaff lavender on dark */
+  --black-subtext: var(--color-subtext);     /* #4a5453 */
+  --light-border:  var(--color-gray-d0);     /* #d0d5dd */
+  --approach-bg:   #f9fafb;                  /* no token yet */
+  --service-para:  var(--color-gray-text);   /* same lavender gray */
+  --footer-label:  var(--color-gray-mid);    /* #908fa7 */
+  --footer-body:   #cfd4dc;                  /* no token yet */
+  --eyebrow-muted: var(--color-gray-67);     /* #667085 */
 
-  /* Responsive gutters: phone=20, tablet=32, desktop=48 */
+  /* ── Responsive gutters (phone=20, tablet=32, desktop=48) ───────
+     tokens.css also defines --gutter-mobile/tablet/desktop.
+     This :root keeps the simpler --gutter shorthand. */
   --gutter:     20px;
   --nav-height: 68px;
 }
@@ -170,7 +174,7 @@ body {
   font-family: var(--f-body);
   color: var(--black-subtext);
   line-height: 1.35;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 h1, h2, h3, h4, h5, h6 { margin: 0; font-family: var(--f-semibold); }
 p { margin: 0; }
@@ -178,6 +182,7 @@ img { display: block; max-width: 100%; }
 a   { color: inherit; text-decoration: none; }
 ul  { list-style: none; margin: 0; padding: 0; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
+div { display: flex; flex-direction: column; }
 
 /* ── Eyebrow tag ────────────────────────────────────────────────── */
 /* Every section's eyebrow: 4px cyan left rule, Gilroy-Medium 16px */
@@ -215,23 +220,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Primary — cyan fill, dark label */
 .btn-primary-cta {
-  background: var(--cyan);
+  background:
+    radial-gradient(circle 80px at var(--cursor-x, -200px) var(--cursor-y, -200px), rgba(255,255,255,0.45) 0%, transparent 100%),
+    var(--cyan);
   color: var(--dark-blue);
-}
-.btn-primary-cta:hover,
-.btn-primary-cta:focus-visible {
-  box-shadow: inset 0 4px 17px rgba(255, 255, 255, 0.97);
 }
 
 /* Secondary — dark-bg, white text */
 .btn-secondary-cta {
-  background: rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle 80px at var(--cursor-x, -200px) var(--cursor-y, -200px), rgba(66,200,244,0.4) 0%, transparent 100%),
+    rgba(255, 255, 255, 0.08);
   color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.05);
-}
-.btn-secondary-cta:hover,
-.btn-secondary-cta:focus-visible {
-  box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
 /* On-white outlined — light border, dark label */
@@ -246,7 +247,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 16px;
   color: var(--dark-blue);
   border: 1px solid var(--light-border);
-  background: transparent;
+  background: radial-gradient(circle 80px at var(--cursor-x, -200px) var(--cursor-y, -200px), rgba(66,200,244,0.15) 0%, transparent 100%);
   transition: border-color 0.2s ease;
 }
 .btn-outline-light:hover,
@@ -272,12 +273,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 .site-header.scrolled {
-  background: rgba(13, 12, 63, 0.92);
+  background: rgba(7, 7, 7, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
 .nav-inner {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   height: 100%;
@@ -314,6 +316,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-links a:hover { color: var(--white); }
 .nav-links a.active { color: #FFFFFF; font-weight: 600; }
 
+/* Hide Home nav item — logo handles home navigation */
+.nav-links li:has(a[href="https://bluespectruminnovative.com/"]),
+.mobile-menu li:has(a[href="https://bluespectruminnovative.com/"]) {
+  display: none;
+}
+
 /* Header CTA */
 .nav-cta {
   display: none;
@@ -342,6 +350,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Hamburger — phone only */
 .nav-toggle {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   width: 44px; height: 44px;
@@ -377,7 +386,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   top: 20px;
   right: var(--gutter);
   width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: row; align-items: center; justify-content: center;
   border-radius: 8px;
   color: var(--white);
   transition: background 0.2s ease;
@@ -472,6 +482,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Image strip */
 .hero-images {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 32px;
@@ -619,6 +630,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .service-card-art {
   flex: 1;
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: center;
   padding: 48px 48px 0 32px;
@@ -755,6 +767,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-top: 40px;
   overflow: hidden;
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 .vision-globe img {
@@ -813,131 +826,120 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── Footer ─────────────────────────────────────────────────────── */
 .site-footer {
-  background: linear-gradient(0deg, rgb(5, 5, 5) 0%, rgb(14, 13, 64) 100%);
+  background: linear-gradient(to top, #050505 0%, #0e0d40 100%);
+  padding: 64px var(--gutter) 0;
 }
-
 .footer-inner {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 64px var(--gutter) 0;
+}
+
+/* Centered logo */
+.footer-logo-wrap {
   display: flex;
-  flex-direction: column;
-  gap: 64px;
-}
-
-/* Logo row */
-.footer-logo-row {
-  padding-bottom: 32px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-}
-.footer-logo {
-  height: 72px;
-  width: auto;
-}
-
-/* Columns — stacked on phone/tablet */
-.footer-columns {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.footer-col {}
-
-.footer-label {
-  font-family: var(--f-medium);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  color: var(--footer-label);
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.footer-contact-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-.footer-contact-item svg { flex-shrink: 0; }
-
-.footer-contact-link {
-  display: block;
-  font-family: var(--f-medium);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--footer-body);
-  transition: color 0.2s ease;
-}
-.footer-contact-link:hover { color: var(--white); }
-
-.footer-contact-text {
-  font-family: var(--f-medium);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--footer-body);
-}
-
-/* Subsidiary row */
-.footer-subsidiary-row {
+  justify-content: center;
   align-items: center;
+  margin-bottom: 40px;
 }
-.subsidiary-logo {
-  height: 48px;
-  width: auto;
+.footer-logo { height: 48px; width: auto; display: block; }
+
+/* Divider below logo */
+.footer-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 32px;
+}
+
+/* Two-column layout: contact | social — stacks on mobile */
+.footer-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* Contact column */
+.footer-contact-list { display: flex; flex-direction: column; gap: 40px; }
+.footer-contact-row  { display: flex; flex-direction: row; align-items: flex-start; gap: 16px; }
+.footer-contact-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.footer-contact-icon img { width: 24px; height: 24px; }
+.footer-contact-label {
+  display: block;
+  font-family: var(--f-medium); font-size: 14px;
+  line-height: 1.2; color: #908fa7;
+  margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.footer-contact-val {
+  display: block;
+  font-family: var(--f-medium); font-size: 16px;
+  line-height: 1.5; color: #d0d5dd; text-decoration: none;
+}
+a.footer-contact-val:hover { color: #fff; }
+
+/* Social column */
+.footer-social-col  { display: flex; flex-direction: column; gap: 28px; }
+.footer-social-main { display: flex; flex-direction: column; gap: 24px; }
+.footer-social-grp  { display: flex; flex-direction: column; gap: 10px; }
+.footer-social-grp-lbl {
+  font-family: var(--f-medium); font-size: 14px;
+  color: #908fa7; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.footer-soc-btn {
+  width: 48px; height: 48px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none;
+  transition: background 0.2s;
   flex-shrink: 0;
 }
-
-/* Social */
-.footer-social {
-  margin-top: 32px;
+.footer-soc-btn:hover { background: rgba(255,255,255,0.08); }
+.footer-soc-btn img  { width: 24px; height: 24px; }
+.footer-find-lbl {
+  display: block;
+  font-family: var(--f-medium); font-size: 14px;
+  color: #908fa7; margin-bottom: 8px;
+  text-transform: uppercase; letter-spacing: 0.04em;
 }
-.footer-social-icons {
-  display: flex;
-  gap: 24px;
-  align-items: flex-end;
-  margin-top: 8px;
-}
-.social-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.social-platform-label {
-  margin-bottom: 0;
-}
-.social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px; height: 40px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  color: var(--footer-body);
-  transition: color 0.2s ease, background 0.2s ease;
-}
-.social-link:hover {
-  color: var(--white);
-  background: rgba(255, 255, 255, 0.12);
-}
+.footer-social-sm { display: flex; flex-direction: row; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
 
 /* Copyright bar */
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.10);
-  padding: 24px 0;
-  text-align: center;
+.footer-copy {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 0;
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: 8px; position: relative;
 }
-.footer-bottom p {
-  font-family: var(--f-medium);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--white);
-  margin: 0;
+.footer-copy p {
+  font-family: var(--f-medium); font-size: 16px; line-height: 1.5;
+  color: #d0d5dd; margin: 0;
+}
+.footer-links { display: flex; flex-direction: row; gap: 24px; }
+.footer-links a {
+  font-family: var(--f-medium); font-size: 16px; line-height: 1.5;
+  color: #fff; text-decoration: none; transition: opacity 0.2s;
+}
+.footer-links a:hover { opacity: 0.7; }
+
+/* ── Footer: mobile overrides ───────────────────────────────── */
+@media (max-width: 809px) {
+  .footer-logo-wrap { justify-content: flex-start; }
+  .footer-contact-list { gap: 24px; }
+  .footer-cols { gap: 0; }
+  .footer-social-col {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+    margin-top: 32px;
+  }
+  .footer-social-main { flex-direction: row; gap: 40px; }
 }
 
 /* ── Reveal animations ──────────────────────────────────────────── */
@@ -1002,7 +1004,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Outer image cards visible on tablet (clipped by overflow:hidden) */
   .hero-img-card--left,
   .hero-img-card--right {
-    display: block;
+    display: flex;
   }
 
   /* ── Research ── */
@@ -1050,6 +1052,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Carousel arrow buttons */
   .carousel-btn {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -1087,16 +1090,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* ── CTA: tablet stacks with 32px gap ── */
   .cta-inner { gap: 32px; }
 
-  /* ── Footer columns: 2×2 grid ── */
-  .footer-columns {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 40px;
+  /* ── Footer: 2-col grid on tablet+ ── */
+  .footer-cols { grid-template-columns: 1fr 1fr; gap: 64px; }
+  .footer-social-main { flex-direction: row; gap: 64px; }
+  .footer-copy {
+    flex-direction: row; align-items: center; justify-content: space-between;
   }
-  .footer-col {
-    flex: 1 1 calc(50% - 20px);
-    min-width: 200px;
+  .footer-copy p {
+    position: absolute; left: 50%; transform: translateX(-50%);
+    white-space: nowrap;
   }
+  .footer-links { margin-left: auto; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -1133,6 +1137,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .cta-photo {
     flex: 1;
     display: flex;
+    flex-direction: row;
     align-items: stretch;
   }
   .cta-photo img {
@@ -1142,12 +1147,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     border-radius: 24px;
   }
 
-  /* ── Footer: 4 columns in a row ── */
-  .footer-columns {
-    flex-wrap: nowrap;
-    gap: 64px;
-  }
-  .footer-col { flex: 1; min-width: 0; }
+  /* ── Footer: same 2-col grid on desktop ── */
 }
 
 /* ================================================================
@@ -1257,6 +1257,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .mission-block {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 80px var(--gutter);
@@ -1331,7 +1332,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .drive-card--navy       { background: rgb(13, 12, 63); }
 .drive-card-icon {
   width: 48px; height: 48px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: row; align-items: center; justify-content: center;
   background: rgba(255,255,255,0.06);
   border-radius: 12px;
   flex-shrink: 0;
@@ -1431,6 +1433,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .value-item {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 16px;
   padding: 20px 4px;
@@ -1439,7 +1442,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .value-item:last-child { border-bottom: none; }
 .value-icon {
   width: 48px; height: 48px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: row; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .value-number {
@@ -1550,7 +1554,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 48px; height: 48px;
   background: rgb(207, 243, 255);
   border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: row; align-items: center; justify-content: center;
   flex-shrink: 0;
 }
 .contact-item-body {
@@ -1714,7 +1719,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   height: 200px;
   background: var(--approach-bg);
   border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  flex-direction: row; align-items: center; justify-content: center;
 }
 .program-card-body {
   display: flex;
@@ -1771,6 +1777,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .impact-cards-scroll::-webkit-scrollbar { display: none; }
 .impact-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 16px;
   background: var(--approach-bg);
@@ -1821,6 +1828,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .company-partner-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 12px;
   background: var(--approach-bg);
@@ -1845,6 +1853,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .individual-partner-card {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 16px;
   background: var(--approach-bg);
@@ -1883,7 +1892,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     align-items: flex-end;
   }
   .about-brand-mark {
-    display: block;
     flex: 1;
     text-align: right;
   }

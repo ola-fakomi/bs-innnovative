@@ -173,4 +173,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Keep buttons in sync after any scroll
   window.addEventListener('resize', updateButtons, { passive: true });
 
+  // ── Button cursor-spotlight ─────────────────────────────────────
+  document.querySelectorAll('.btn, .btn-outline-light, .btn-ev-wl, .btn-ev-sp').forEach(function (btn) {
+    btn.addEventListener('mousemove', function (e) {
+      const r = btn.getBoundingClientRect();
+      btn.style.setProperty('--cursor-x', (e.clientX - r.left) + 'px');
+      btn.style.setProperty('--cursor-y', (e.clientY - r.top)  + 'px');
+    });
+    btn.addEventListener('mouseleave', function () {
+      btn.style.setProperty('--cursor-x', '-200px');
+      btn.style.setProperty('--cursor-y', '-200px');
+    });
+  });
+
 });
