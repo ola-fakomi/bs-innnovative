@@ -3,16 +3,1400 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bluespectrum Innovative — Engineering Innovation for Africa's Future</title>
-  <meta name="description" content="Bluespectrum Innovative builds, supports, and scales transformative solutions across technology, research, and enterprise — AI, sustainable systems, and digital transformation." />
+  <title>IRSC 2027 — Events | Bluespectrum Innovative</title>
+  <meta name="description" content="Innovative Research &amp; Sustainability Conference 2027 — an annual academic conference on innovation, sustainability and waste repurposing, held across Nigeria and South Africa." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.27/dist/lenis.css" />
+  <link rel="stylesheet" href="assets/css/tokens.css" />
+  <link rel="stylesheet" href="assets/css/system.css" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ═══════════════════════════════════════════════
+       IRSC 2027 — Events Page
+    ═══════════════════════════════════════════════ */
+
+    /* Section label (cyan left-bar) */
+    .ev-label {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Gilroy-Medium', 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      color: var(--black-subtext);
+      margin-bottom: 20px;
+    }
+    .ev-label::before {
+      content: '';
+      display: block;
+      width: 3px;
+      height: 18px;
+      background: var(--cyan);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .ev-label--light { color: rgba(255,255,255,0.65); }
+    .ev-label--light::before { background: var(--cyan); }
+    .ev-label--white { color: #fff; }
+    .ev-label--white::before { background: var(--cyan); }
+    .ev-label--center { justify-content: center; display: flex; flex-direction: row; }
+    .ev-label--border-left { border-left: 4px solid #42c8f5; padding-left: 10px; }
+    .ev-label--border-left::before { display: none; }
+
+    /* ── 1. Hero ───────────────────────────────────── */
+    .ev-hero {
+      position: relative;
+      background: url('Images/Event/Hero.png') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    .ev-hero-body {
+      flex: 1 1 0;
+      min-height: 0;
+      max-height: 100%;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      align-items: stretch;
+      gap: 0;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+      width: 100%;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 2;
+    }
+    .ev-hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 140px;
+      height: 100%;
+    }
+    .ev-hero-subtitle {
+      font-family: var(--f-body);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: rgba(255,255,255,0.52);
+      max-width: 290px;
+      margin: 0;
+    }
+    .ev-hero-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .ev-hero-heading {
+      font-family: var(--f-medium);
+      font-size: 48px;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin: 0;
+    }
+    .ev-hero-btns {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .btn-ev-wl {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      gap: 4px;
+      height: 48px;
+      padding: 0 20px;
+      font-family: var(--f-body);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      line-height: 1;
+      color: #0D0C3F;
+      background:
+        radial-gradient(circle 120px at var(--cursor-x, -200px) var(--cursor-y, -200px), rgba(66,200,244,0.9) 0%, rgba(66,200,244,0.4) 50%, transparent 70%),
+        linear-gradient(90deg, #FFFFFF 0%, #FFFFFF 54%, #42C8F4 100%);
+      border: none;
+      border-radius: 16px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-ev-wl::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1.5px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, rgba(153,153,153,0) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .btn-ev-wl:hover { opacity: 0.88; }
+    .btn-ev-wl-arr {
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      line-height: 0;
+    }
+    .btn-ev-sp {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+      font-family: var(--f-body);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      line-height: 1;
+      color: rgba(255,255,255,0.65);
+      background:
+        radial-gradient(circle 120px at var(--cursor-x, -200px) var(--cursor-y, -200px), rgba(66,200,244,0.9) 0%, rgba(66,200,244,0.4) 50%, transparent 70%),
+        linear-gradient(to bottom, rgba(255,255,255,0.10) 0%, rgba(153,153,153,0.10) 100%);
+      border: none;
+      border-radius: 16px;
+      height: 48px;
+      padding: 0 20px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-ev-sp::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1.5px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.12) 0%, rgba(153,153,153,0) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .btn-ev-sp:hover { opacity: 0.88; }
+
+    /* Recycling art */
+    .ev-hero-art {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      overflow: visible;
+    }
+    .ev-hero-art img {
+      width: 115%;
+      max-width: 620px;
+      height: auto;
+      margin-right: -32px;
+      display: block;
+      transform-origin: center center;
+    }
+
+    /* Countdown */
+    .ev-countdown-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 0 var(--gutter);
+      position: relative;
+      z-index: 10;
+      transform: translateY(-50%);
+      animation: cd-rise 0.65s cubic-bezier(0.4, 0, 0.2, 1) 0.55s both;
+    }
+    @keyframes cd-rise {
+      from { opacity: 0; transform: translateY(calc(-50% + 40px)); }
+      to   { opacity: 1; transform: translateY(-50%); }
+    }
+    .ev-countdown {
+      position: relative;
+      background: linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 33%, #FFFFFF 66%, #F9FDFF 100%);
+      border: none;
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      align-items: center;
+      width: 100%;
+      max-width: 520px;
+      height: 92px;
+      overflow: hidden;
+    }
+    .ev-countdown::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: linear-gradient(to bottom, rgba(13,12,63,0.08) 0%, rgba(13,12,63,0.08) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .ev-cd-unit {
+      padding: 0 24px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .ev-cd-unit + .ev-cd-unit::after {
+      content: ''; position: absolute;
+      left: 0; top: 20%; height: 60%; width: 1px;
+      background: rgba(13,12,63,0.1);
+    }
+    .ev-cd-num {
+      display: block;
+      font-family: 'Gilroy-Bold', 'Inter', system-ui, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: #050505;
+      line-height: 1;
+    }
+    .ev-cd-label {
+      display: block;
+      font-family: var(--f-body);
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: #9F9F9F;
+      text-transform: capitalize;
+    }
+
+    /* ── 2. About ──────────────────────────────────── */
+    .ev-about {
+      background: linear-gradient(to bottom, #FFFFFF 0%, #F9F9FA 100%);
+      padding: 64px var(--gutter) 128px;
+      text-align: center;
+    }
+    .ev-about-inner { max-width: 720px; margin: 0 auto; }
+    .ev-about h2 {
+      font-family: var(--f-medium);
+      font-size: 40px; font-weight: 700;
+      line-height: 1.1; letter-spacing: -0.01em;
+      color: var(--dark-blue); margin: 0 0 22px;
+    }
+    .ev-about p {
+      font-family: var(--f-body);
+      font-size: 16px; font-weight: 500; line-height: 1.3;
+      color: var(--black-subtext); margin: 0;
+    }
+
+    /* ── 3. Conference Info ────────────────────────── */
+    .ev-info {
+      background: #fff;
+      padding: 90px var(--gutter);
+      border-top: 1px solid var(--light-border);
+    }
+    .ev-info-inner { max-width: 1440px; margin: 0 auto; }
+
+    /* Row: stacks compact + expanded vertically */
+    .ev-info-row {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid rgba(13,12,63,0.08);
+    }
+    .ev-info-row:last-child { border-bottom: 1px solid rgba(13,12,63,0.08); }
+
+    /* Compact always-visible part */
+    .ev-info-compact {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      min-height: 96px;
+      padding: 20px 0;
+      cursor: default;
+    }
+
+    /* Stat label (left column) — muted by default, dark on hover */
+    .ev-info-stat {
+      flex: 0 0 300px;
+      font-family: 'Gilroy-SemiBold', 'Inter', system-ui, sans-serif;
+      font-size: 40px;
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.4px;
+      color: rgba(13,12,63,0.28);
+      transition: color 0.35s ease;
+    }
+    .ev-info-row:hover .ev-info-stat { color: #0d0c3f; }
+
+    /* Compact label+value pairs (right column) */
+    .ev-info-cols {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+      gap: 0;
+      transition: opacity 0.3s ease;
+    }
+    /* Fade-out only for plain-text cols (not image-card or typo rows) */
+    .ev-info-row:hover .ev-info-cols:not(.ev-info-cols--img):not(.ev-info-cols--typo) {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ── Unified typo cols (Year / Months) ───────────────────────
+       State 1: white bg, 0px radius, left border, small value text.
+       State 2: gradient bg, value grows, ghost text fades in.
+    ─────────────────────────────────────────────────────────────── */
+    .ev-info-cols--typo { gap: 0; overflow: hidden; }
+    .ev-info-cols--typo .ev-info-col {
+      position: relative;
+      overflow: hidden;
+      border-left: 1px solid #efeff2;
+      border-radius: 0;
+      padding: 16px 24px;
+      height: 60px;
+      justify-content: center;
+      align-items: flex-start;
+      transition: height 0.4s cubic-bezier(0.4,0,0.2,1),
+                  background 0.4s ease,
+                  padding 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .ev-info-cols--typo .ev-info-col + .ev-info-col {
+      border-left: 1px solid #efeff2;
+    }
+    .ev-info-cols--typo .ev-info-col-label,
+    .ev-info-cols--typo .ev-info-col-value { position: relative; z-index: 1; }
+    .ev-info-cols--typo .ev-info-col-value {
+      transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1),
+                  letter-spacing 0.4s ease,
+                  line-height 0.4s ease;
+    }
+    /* Ghost text — hidden in default state */
+    .ev-info-col-ghost {
+      position: absolute;
+      font-family: 'Gilroy-Bold', 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      color: rgba(13,12,63,0.055);
+      letter-spacing: -0.04em;
+      right: -8px; bottom: -24px;
+      line-height: 1;
+      pointer-events: none; user-select: none;
+      opacity: 0;
+      transition: opacity 0.4s ease 0.1s;
+      z-index: 0;
+    }
+    /* Year col: larger ghost, larger hover value */
+    .ev-info-col--year .ev-info-col-ghost { font-size: 200px; }
+    /* Month cols: smaller ghost, italic hover value */
+    .ev-info-col--month .ev-info-col-ghost { font-size: 110px; bottom: -20px; }
+
+    /* Hover: expand, gradient, grow text, reveal ghost */
+    .ev-info-row:hover .ev-info-cols--typo {
+      background: none;
+    }
+    .ev-info-row:hover .ev-info-cols--typo .ev-info-col {
+      height: 200px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: transparent;
+    }
+    .ev-info-row:hover .ev-info-cols--typo .ev-info-col + .ev-info-col {
+      border-left-color: rgba(13,12,63,0.08);
+    }
+    .ev-info-row:hover .ev-info-col-ghost { opacity: 1; }
+    .ev-info-row:hover .ev-info-col--year .ev-info-col-value,
+    .ev-info-row:hover .ev-info-col--month .ev-info-col-value {
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      font-style: italic;
+    }
+    .ev-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      border-left: 1px solid #efeff2;
+      padding-left: 24px;
+      padding-right: 24px;
+      overflow: visible;
+    }
+    /* ── Unified image-card cols ──────────────────────────────────
+       State 1 (default): card shape, white cover hides the bg image, dark text.
+       State 2 (hover):   white cover fades out revealing image, text goes white.
+       Layer order: bg-image < ::before (white cover) < ::after (dark overlay) < text
+    ─────────────────────────────────────────────────────────────── */
+    .ev-info-cols--img { gap: 16px; }
+    .ev-info-cols--img .ev-info-col {
+      border-left: 1px solid #efeff2;
+      border-radius: 0;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      padding: 16px 20px;
+      height: 60px;
+      justify-content: center;
+      align-items: flex-start;
+      transition: height 0.4s cubic-bezier(0.4,0,0.2,1),
+                  border-color 0.3s ease;
+    }
+    /* White cover — hides background image in default state */
+    .ev-info-cols--img .ev-info-col::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: #ffffff;
+      opacity: 1;
+      pointer-events: none;
+      z-index: 0;
+      transition: opacity 0.4s ease;
+    }
+    /* Dark gradient overlay — fades in on hover */
+    .ev-info-cols--img .ev-info-col::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.3s ease 0.15s;
+    }
+    .ev-info-cols--img .ev-info-col-label,
+    .ev-info-cols--img .ev-info-col-value {
+      position: relative; z-index: 2;
+      transition: color 0.35s ease, font-size 0.4s cubic-bezier(0.4,0,0.2,1), letter-spacing 0.4s ease;
+    }
+    /* Hover: expand card, reveal image */
+    .ev-info-row:hover .ev-info-cols--img .ev-info-col {
+      height: auto;
+      aspect-ratio: 1095 / 840;
+      justify-content: flex-start;
+      align-items: flex-start;
+      border-radius: 0;
+      border-color: transparent;
+    }
+    .ev-info-row:hover .ev-info-cols--img .ev-info-col::before { opacity: 0; }
+    .ev-info-row:hover .ev-info-cols--img .ev-info-col::after  { opacity: 1; }
+    .ev-info-row:hover .ev-info-cols--img .ev-info-col-label { color: rgba(255,255,255,0.78); }
+    .ev-info-row:hover .ev-info-cols--img .ev-info-col-value {
+      color: #fff;
+      font-size: 40px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      font-style: italic;
+    }
+
+    .ev-info-col-label {
+      font-family: 'Aventa', 'Inter', system-ui, sans-serif;
+      font-size: 16px; font-weight: 500;
+      color: #4a5453; line-height: 1.35;
+    }
+    .ev-info-col-value {
+      font-family: 'Gilroy-Bold', 'Inter', system-ui, sans-serif;
+      font-size: 22px; font-weight: 400;
+      color: #002347; line-height: 1.3;
+    }
+
+    /* Expanded panel — grid-row trick for smooth height animation.
+       IMPORTANT: padding must NOT be on the grid item (.ev-info-expanded-inner),
+       only on its child (.ev-info-expanded-body). */
+    .ev-info-expanded {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1);
+      overflow: hidden;
+    }
+    .ev-info-row:hover .ev-info-expanded { grid-template-rows: 1fr; }
+    .ev-info-expanded-inner { min-height: 0; }
+    .ev-info-expanded-body {
+      /* indent to align with right column */
+      padding: 0 0 24px 300px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .ev-info-row:hover .ev-info-expanded-body {
+      opacity: 1;
+    }
+
+    /* ── Typographic panel (Same Year) ── */
+    .ev-info-typo {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #cce5f6 0%, #e2f2fb 40%, #f3f9fd 70%, #fff 100%);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px 48px;
+    }
+    .ev-info-typo-ghost {
+      position: absolute;
+      font-family: 'Gilroy-Bold', 'Inter', system-ui, sans-serif;
+      font-size: 200px; font-weight: 700;
+      color: rgba(13,12,63,0.055);
+      letter-spacing: -0.04em;
+      right: -8px; bottom: -48px;
+      line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .ev-info-typo-label {
+      font-family: 'Aventa', 'Inter', system-ui, sans-serif;
+      font-size: 14px; font-weight: 500;
+      color: #4a5453; margin-bottom: 8px;
+    }
+    .ev-info-typo-value {
+      font-family: 'Gilroy-SemiBold', 'Inter', system-ui, sans-serif;
+      font-size: 80px; font-weight: 400;
+      letter-spacing: -0.03em; line-height: 1;
+      color: #002347; position: relative; z-index: 1;
+    }
+    .ev-info-typo-value .ev-cyan { color: var(--cyan); }
+
+    /* ── Months panel (2 Months) ── */
+    .ev-info-months {
+      display: flex;
+      flex-direction: row;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #cce5f6 0%, #e2f2fb 40%, #f3f9fd 70%, #fff 100%);
+      min-height: 200px;
+    }
+    .ev-info-month-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .ev-info-month-col + .ev-info-month-col { border-left: 1px solid rgba(13,12,63,0.08); }
+    .ev-info-month-ghost {
+      position: absolute;
+      font-family: 'Gilroy-Bold', 'Inter', system-ui, sans-serif;
+      font-size: 110px; font-weight: 700;
+      color: rgba(13,12,63,0.055);
+      letter-spacing: -0.04em;
+      right: -4px; bottom: -20px;
+      line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .ev-info-month-label {
+      font-family: 'Aventa', 'Inter', system-ui, sans-serif;
+      font-size: 14px; font-weight: 500;
+      color: #4a5453; margin-bottom: 8px;
+    }
+    .ev-info-month-name {
+      font-family: 'Gilroy-SemiBold', 'Inter', system-ui, sans-serif;
+      font-size: 52px; font-weight: 400;
+      letter-spacing: -0.02em; line-height: 1;
+      color: #002347; font-style: italic;
+      position: relative; z-index: 1;
+    }
+    .ev-info-month-name .ev-cyan { color: var(--cyan); }
+
+    /* ── Image cards (universities, countries, cities, events) ── */
+    .ev-info-img-cards {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+    .ev-info-img-card {
+      flex: 1;
+      height: 220px;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      background: #b8cfe0 center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 20px 24px;
+    }
+    .ev-info-img-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.12) 55%, transparent 100%);
+      pointer-events: none;
+    }
+    .ev-info-img-card-label {
+      font-family: 'Aventa', 'Inter', system-ui, sans-serif;
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.78);
+      position: relative; z-index: 1;
+      margin-bottom: 4px;
+    }
+    .ev-info-img-card-value {
+      font-family: 'Gilroy-Bold', 'Inter', system-ui, sans-serif;
+      font-size: 20px; font-weight: 400;
+      color: #fff; letter-spacing: -0.01em;
+      position: relative; z-index: 1;
+    }
+    /* Image backgrounds */
+    .ev-info-img-card--uni1  { background-image: url('Images/Event/EventInfo/Img_Venue_Babcock.webp'); }
+    .ev-info-img-card--uni2  { background-image: url('Images/Event/EventInfo/Img_Venue_Sol.webp'); }
+    .ev-info-img-card--city1 { background-image: url('Images/Event/EventInfo/Img_City_IlishanRemo.webp'); }
+    .ev-info-img-card--city2 { background-image: url('Images/Event/EventInfo/Img_City_Kimberley.webp'); }
+    .ev-info-img-card--ng    { background-image: url('Images/Event/EventInfo/Img_Country_Nigeria.webp'); }
+    .ev-info-img-card--sa    { background-image: url('Images/Event/EventInfo/Img_Country_SA.webp'); }
+    .ev-info-img-card--conf  { background-image: url('Images/Event/EventInfo/Img_Academic%20Conference.webp'); }
+    .ev-info-img-card--award { background-image: url('Images/Event/EventInfo/Img_PanAfrican%20Scholar%20Award.webp'); }
+
+    /* ── 4. Activities To Expect ───────────────────── */
+    .ev-activities {
+      background: var(--navy);
+      padding: 90px var(--gutter);
+    }
+    .ev-activities-inner { max-width: 1440px; margin: 0 auto; height: fit-content; }
+    .ev-activities-inner h2 {
+      font-family: Gilroy-Regular, Inter, system-ui, sans-serif;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 44px;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin: 0 0 40px;
+    }
+    .ev-act-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+      row-gap: 0;
+    }
+    .ev-act-item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 24px 0;
+
+    }
+    .ev-act-badge {
+      flex-shrink: 0;
+      width: 64px;
+      height: 24px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      border-top: 0;
+      border-right: 4px solid var(--cyan);
+      border-bottom: 0;
+      border-left: 0;
+      background: rgba(255,255,255,0.02);
+      font-family: 'Aventa', 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #fff;
+      transition: background 0.2s ease;
+    }
+    .ev-act-item:hover .ev-act-badge {
+      background: transparent;
+    }
+    .ev-act-text h3 {
+      font-family: 'Gilroy-SemiBold', 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 1.35;
+      color: #fff;
+      margin: 0 0 4px;
+      transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1), letter-spacing 0.4s ease, line-height 0.4s ease;
+    }
+    .ev-act-item:hover .ev-act-text h3 {
+      font-size: 36px; font-weight: 400; font-style: italic;
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .ev-act-text p {
+      font-family: 'Aventa', 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.3;
+      color: #9f9f9f;
+      margin: 0;
+    }
+
+    /* ── 5. Abstract Submission ────────────────────── */
+    .ev-abstract {
+      background: #fff;
+      padding: 90px var(--gutter);
+      border-top: 1px solid var(--light-border);
+    }
+    .ev-abstract-inner { max-width: 1440px; margin: 0 auto; }
+    .ev-abstract > .ev-abstract-inner > h2 {
+      font-family: var(--f-medium);
+      font-size: 40px; font-weight: 700;
+      line-height: 40px; letter-spacing: -0.4px;
+      color: var(--navy);
+      margin: 0 0 40px;
+    }
+    /* Rounded card wrapping all abstract sub-sections */
+    .ev-abstract-card {
+      border: 1px solid rgba(13,12,63,0.15);
+      border-radius: 48px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+    /* Review process box */
+    .ev-review-box {
+      border-bottom: 1px solid rgba(13,12,63,0.15);
+    }
+    .ev-review-top {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; padding: 48px 28px 0;
+    }
+    .ev-review-top h3 {
+      font-family: var(--font-semibold);
+      font-size: 28px;
+      line-height: 1.35; letter-spacing: 0;
+      color: var(--dark-blue); margin: 0;
+    }
+    .ev-review-top p {
+      font-family: var(--f-body);
+      font-size: 16px; line-height: 1.3;
+      color: var(--black-subtext); margin: 0; align-self: center;
+    }
+    /* Step cards row */
+    .ev-steps {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-auto-rows: 324px;
+      gap: 8px;
+      padding: 32px 28px 48px;
+    }
+    .ev-step {
+      background: linear-gradient(to bottom, #ffffff 40%, #e1f7ff 100%);
+      border: 1px solid rgba(13,12,63,0.08);
+      border-radius: 20px;
+      padding: 24px 24px 32px;
+    }
+    .ev-step-n {
+      display: block;
+      font-family: var(--f-bold);
+      font-size: 56px; line-height: 1.05;
+      color: var(--dark-blue); margin-bottom: 20px;
+    }
+    .ev-step h4 {
+      font-family: var(--font-semibold);
+      font-size: 22px; font-weight: 700; line-height: 1.36; letter-spacing: 0;
+      color: var(--color-primary); margin: 0 0 8px;
+      transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1), letter-spacing 0.4s ease, line-height 0.4s ease;
+    }
+    .ev-step:hover h4 {
+      font-size: 36px; font-weight: 400; font-style: italic;
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .ev-step p {
+      font-family: var(--f-body);
+      font-size: 16px; line-height: 1.3;
+      color: var(--black-subtext); margin: 0;
+    }
+    /* JRVCS publication banner */
+    .ev-jrvcs {
+      display: grid; grid-template-columns: 1.3fr 1fr;
+      border-bottom: 1px solid rgba(13,12,63,0.15);
+    }
+    .ev-jrvcs-left {
+      background: url('Images/Event/Hero.png') center/cover no-repeat;
+      padding: 48px 48px 48px 28px;
+    }
+    .ev-jrvcs-left h3 {
+      font-family: var(--font-semibold);
+      font-size: 28px;
+      line-height: 1.35; letter-spacing: 0;
+      color: #fff; margin: 0 0 16px;
+    }
+    .ev-jrvcs-left p {
+      font-family: var(--f-body);
+      font-size: 16px; line-height: 1.3;
+      color: var(--color-white); margin: 0 0 32px;
+    }
+    /* Button on dark banner */
+    .btn-ev-wl {
+      display: inline-flex; align-items: center; gap: 10px;
+      height: 48px; padding: 0 20px;
+      font-family: var(--f-body); font-size: 13px;
+      color: var(--navy);
+      background:
+        radial-gradient(circle 120px at var(--cursor-x, -200px) var(--cursor-y, -200px), rgba(66,200,244,0.9) 0%, rgba(66,200,244,0.4) 50%, transparent 70%),
+        linear-gradient(90deg, #fff 0%, #fff 54%, var(--cyan) 100%);
+      border: none;
+      border-radius: 16px; text-decoration: none; transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .btn-ev-wl:hover { opacity: 0.88; }
+    .btn-ev-wl-arr { display: inline-flex; align-items: center; }
+    .ev-jrvcs-right {
+      background: #f3fcff;
+      display: flex;
+      flex-direction: row; align-items: center; justify-content: center;
+      padding: 44px 32px;
+    }
+    .ev-jrvcs-logo { max-width: 220px; width: 100%; height: auto; }
+    /* Who can participate */
+    .ev-who-wrap {
+      background: #fff;
+      padding: 48px 28px 28px;
+    }
+    .ev-who-heading {
+      font-family: var(--font-semibold);
+      font-size: 28px;
+      line-height: 1.35; letter-spacing: 0;
+      color: var(--dark-blue);
+      margin: 0 0 24px;
+    }
+    .ev-who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+    .ev-who-row { display: contents; }
+    .ev-who-card {
+      border-radius: 24px;
+      padding: 40px;
+      height: 326px;
+      position: relative; overflow: hidden;
+      background: linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+    }
+    .ev-who-card::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(13,12,63,0.95) 35%, rgba(13,12,63,0.5) 65%, rgba(13,12,63,0.08) 100%);
+    }
+    .ev-who-card--academics {
+      background:
+        url('Images/Event/Img_Academics.png') right top / auto 100% no-repeat,
+        linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+      background-blend-mode: lighten, normal;
+    }
+    .ev-who-card--industry {
+      background:
+        url('Images/Event/img_MembersOfIndustry.png') right top / auto 100% no-repeat,
+        linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+      background-blend-mode: lighten, normal;
+    }
+    .ev-who-card--public {
+      background:
+        url('Images/Event/Img_PublicSector.png') right top / auto 100% no-repeat,
+        linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+      background-blend-mode: lighten, normal;
+    }
+    .ev-who-card--devt {
+      background:
+        url('Images/Event/Img_DevelopmentSector.png') right top / auto 100% no-repeat,
+        linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+      background-blend-mode: lighten, normal;
+    }
+    .ev-who-inner { position: relative; z-index: 2; }
+    .ev-who-card h3 {
+      font-family: var(--font-semibold);
+      font-size: 22px; font-weight: 700; line-height: 1.36; letter-spacing: 0;
+      color: #fff; margin: 0 0 12px;
+      transition: font-size 0.4s cubic-bezier(0.4,0,0.2,1), letter-spacing 0.4s ease, line-height 0.4s ease;
+    }
+    .ev-who-card:hover h3 {
+      font-size: 36px; font-weight: 400; font-style: italic;
+      letter-spacing: -0.02em; line-height: 1;
+    }
+    .ev-who-bar {
+      width: 28px; height: 2px;
+      background: var(--white);
+      border-radius: 1px; margin-bottom: 20px;
+    }
+    .ev-who-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+    .ev-who-list li {
+      font-family: var(--f-body);
+      font-size: 16px; line-height: 1.3;
+      color: var(--color-white);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .ev-who-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 15px; height: 15px;
+      background: url('Icons/Checkbox.svg') center/contain no-repeat;
+    }
+
+    /* ── 6. On-Site Only ───────────────────────────── */
+    .ev-onsite {
+      position: relative; overflow: hidden;
+      background: url('Images/Event/ParticipationType.png') center/cover no-repeat;
+      min-height: 800px;
+      display: flex; align-items: flex-end;
+      padding: 0 var(--gutter) 90px;
+    }
+    /* Left-to-right scrim matching Figma Rectangle 34624297 */
+    .ev-onsite::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to right, var(--navy) 0%, transparent 60%);
+    }
+    .ev-onsite-rows { display: none; }
+    .ev-onsite-inner {
+      max-width: 1440px; width: 100%; margin: 0 auto;
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 60px; align-items: flex-start;
+    }
+    .ev-onsite-label-col {
+      padding-bottom: 8px;
+    }
+    .ev-onsite h2 {
+      font-family: var(--f-medium);
+      font-size: 40px; font-weight: 700;
+      line-height: 40px; letter-spacing: -0.4px;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .ev-onsite p {
+      font-family: var(--f-body);
+      font-size: 16px; line-height: 1.3;
+      color: var(--color-white); margin: 0;
+    }
+
+    /* ── 7. Registration CTA ───────────────────────── */
+    .ev-register {
+      background: var(--navy);
+      padding: 0 var(--gutter);
+      position: relative; overflow: hidden;
+      min-height: 540px; height: fit-content; display: flex; align-items: center;
+    }
+    .ev-register-inner {
+      max-width: 720px; margin: 0;
+      position: relative; z-index: 2;
+      padding: 90px 0;
+    }
+    .ev-register h2 {
+      font-family: var(--f-medium);
+      font-size: 40px; font-weight: 700;
+      line-height: 40px; letter-spacing: -0.4px;
+      color: #fff;
+      margin: 0 0 14px;
+    }
+    .ev-register p {
+      font-family: var(--f-body);
+      font-size: 16px; line-height: 1.3;
+      color: var(--gray-text);
+      margin: 0 0 32px;
+    }
+    .ev-register-btns { display: flex; flex-direction: row; align-items: center; gap: 14px; flex-wrap: wrap; }
+    /* Right artwork — absolutely fills the right half of the section */
+    .ev-register-art {
+      position: absolute;
+      right: 0; top: 0;
+      height: 420px; width: 393px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .ev-register-art img {
+      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: left center;
+    }
+
+    /* ── Apple Design improvements ─────────────────────────────────
+       Principles: respond on pointer-down, iOS deceleration curve,
+       interruptible springs, font optical sizing, reduced motion.
+    ─────────────────────────────────────────────────────────────── */
+
+    /* iOS deceleration easing — replaces ease/material curves */
+    :root { --ease-decel: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+    /* Conference info rows: pointer feedback on press */
+    .ev-info-row { cursor: pointer; }
+    .ev-info-compact { cursor: pointer; }
+    .ev-info-row:active .ev-info-compact {
+      background: rgba(13, 12, 63, 0.015);
+      border-radius: 8px;
+      transition: background 80ms ease;
+    }
+
+    /* Stat color: faster response (Apple: respond immediately) */
+    .ev-info-stat { transition: color 0.2s var(--ease-decel); }
+
+    /* Expand: tighter timing, iOS deceleration */
+    .ev-info-expanded {
+      transition: grid-template-rows 0.35s var(--ease-decel);
+    }
+
+    /* Cross-fade: compact out first, expanded in with slight offset */
+    .ev-info-cols { transition: opacity 0.18s var(--ease-decel); }
+    .ev-info-expanded-body {
+      transition: opacity 0.25s var(--ease-decel) 0.1s;
+    }
+
+    /* Image cards: subtle zoom on reveal (depth cue) */
+    .ev-info-img-card {
+      transition: transform 0.4s var(--ease-decel);
+    }
+    .ev-info-row:hover .ev-info-img-card {
+      transform: scale(1.015);
+    }
+
+    /* Optical sizing on large display text */
+    .ev-info-stat,
+    .ev-info-typo-value,
+    .ev-info-month-name { font-optical-sizing: auto; }
+
+    /* Buttons: pointer-down feedback (Apple: respond on press, not release) */
+    .btn-ev-wl,
+    .btn-ev-sp {
+      transition: opacity 0.15s var(--ease-decel),
+                  transform 0.1s var(--ease-decel);
+    }
+    .btn-ev-wl:active,
+    .btn-ev-sp:active { transform: scale(0.97); opacity: 0.85; }
+
+    /* Activity items: subtle hover bg for scanability */
+    .ev-act-item {
+      border-radius: 8px;
+      padding-left: 8px;
+      padding-right: 8px;
+      margin-left: -8px;
+      margin-right: -8px;
+      transition: background 0.15s var(--ease-decel);
+    }
+    .ev-act-item:hover { background: rgba(255,255,255,0.04); }
+
+    /* Scroll edge fade on sticky nav (blur/fade over content, not hard border) */
+    .site-header {
+      transition: background 0.25s var(--ease-decel),
+                  backdrop-filter 0.25s var(--ease-decel);
+    }
+
+    /* ── Reduced motion ──────────────────────────────
+       No slide/spring/scale — only opacity cross-fades.
+    ──────────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .ev-info-expanded { transition: none; }
+      .ev-info-cols,
+      .ev-info-expanded-body { transition: opacity 0.15s ease; transition-delay: 0s; }
+      .ev-info-stat { transition: color 0.1s ease; }
+      .ev-info-img-card { transition: none; }
+      .ev-info-img-card:hover { transform: none; }
+      .btn-ev-wl,
+      .btn-ev-sp { transition: opacity 0.1s ease; }
+      .btn-ev-wl:active,
+      .btn-ev-sp:active { transform: none; }
+      .ev-act-item { transition: none; }
+    }
+
+    /* ── Responsive ────────────────────────────────── */
+
+    /* Tablet — 810px–1080px */
+    @media (max-width: 1080px) {
+      .ev-hero-text { gap: 80px; }
+      .ev-act-grid { grid-template-columns: 1fr; }
+      .ev-info-stat { flex: 0 0 200px; font-size: 32px; }
+      .ev-info-expanded-body { padding: 0 0 24px 200px; }
+      .ev-steps { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; gap: 8px; }
+      .ev-register-inner { max-width: 100%; }
+    }
+
+    /* Mobile — ≤ 809px */
+    @media (max-width: 809px) {
+      /* Hero */
+      .ev-hero {
+        height: 90vh;
+        min-height: unset;
+        display: block;
+        overflow-x: clip;
+        overflow-y: clip;
+        padding-bottom: 0;
+      }
+      .ev-hero-body {
+        display: flex;
+        flex-direction: column;
+        flex: none;
+        height: auto;
+        min-height: unset;
+        max-height: unset;
+        overflow: visible;
+        grid-template-columns: unset;
+        padding: 100px var(--gutter) 0;
+        gap: 0;
+      }
+      .ev-hero-text { height: auto; gap: 0; }
+      /* Flatten ev-hero-bottom so subtitle can be ordered between heading & buttons */
+      .ev-hero-bottom { display: contents; }
+      .ev-hero-heading { order: 1; font-size: 40px; line-height: 1.08; }
+      .ev-hero-subtitle {
+        order: 2;
+        font-size: 15px;
+        max-width: 100%;
+        margin-top: 20px;
+      }
+      .ev-hero-btns {
+        order: 3;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 32px;
+      }
+      .btn-ev-wl, .btn-ev-sp { width: 100%; justify-content: center; height: 56px; }
+      .ev-hero-art {
+        display: flex;
+        flex: none;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-end;
+        margin-top: 40px;
+        overflow: hidden;
+        height: auto;
+        overflow: visible;
+      }
+      .ev-hero-art img {
+        width: 150%;
+        max-width: unset;
+        margin-right: 0;
+        height: auto;
+        object-fit: unset;
+      }
+
+      /* Countdown */
+      .ev-countdown { max-width: 100%; height: 80px; }
+      .ev-cd-unit { padding: 0 12px; }
+      .ev-cd-num { font-size: 22px; }
+      .ev-cd-label { font-size: 12px; }
+
+      /* About */
+      .ev-about { padding: 48px var(--gutter) 80px; text-align: left; }
+      .ev-about h2 { font-size: 28px; }
+      .ev-about .ev-label--center { justify-content: flex-start; }
+
+      /* Conference Info */
+      .ev-info { padding: 60px var(--gutter); }
+      /* Row: remove dividers, add gap between rows */
+      .ev-info-row { border-top: none; }
+      .ev-info-row:last-child { border-bottom: none; }
+      .ev-info-row + .ev-info-row { margin-top: 28px; }
+      /* Compact: column layout — stat heading above, cards below */
+      .ev-info-compact { flex-direction: column; align-items: stretch; min-height: unset; padding: 0; gap: 16px; }
+      /* Stat: full-width heading — matches abstract h2 text style */
+      .ev-info-stat {
+        flex: none; width: 100%;
+        font-family: var(--f-medium);
+        font-size: 28px; font-weight: 700;
+        line-height: 1.1; letter-spacing: -0.4px;
+        color: var(--navy);
+      }
+      .ev-info-expanded-body { padding: 0 0 20px 0; }
+
+      /* ── Image cols: stacked, full-width, locked aspect ratio, image revealed ── */
+      .ev-info-cols--img { flex-direction: column; gap: 12px; }
+      .ev-info-cols--img .ev-info-col {
+        height: auto;
+        aspect-ratio: 3 / 2;
+        width: 100%;
+        border-left: none;
+        border-radius: 16px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 16px 20px;
+        transition: none;
+      }
+      .ev-info-cols--img .ev-info-col::before { opacity: 0; }
+      .ev-info-cols--img .ev-info-col::after  { opacity: 1; }
+      .ev-info-cols--img .ev-info-col-label { color: rgba(255,255,255,0.78); }
+      .ev-info-cols--img .ev-info-col-value  { color: #fff; font-size: 18px; }
+
+      /* ── Typo cols: individual cards with ghost always visible ── */
+      .ev-info-cols--typo { flex-direction: column; gap: 12px; border: none; background: none; }
+      .ev-info-cols--typo .ev-info-col {
+        border-left: none;
+        border: 1px solid rgba(13,12,63,0.1);
+        border-radius: 16px;
+        background: rgba(13,12,63,0.03);
+        height: 180px;
+        width: 100%;
+        padding: 20px 24px;
+        justify-content: flex-start;
+        align-items: flex-start;
+        overflow: hidden;
+        transition: none;
+      }
+      .ev-info-cols--typo .ev-info-col-ghost { opacity: 1; }
+      .ev-info-cols--typo .ev-info-col + .ev-info-col { border-left: 1px solid rgba(13,12,63,0.1); }
+
+      /* Activities */
+      .ev-activities { padding: 60px var(--gutter); }
+      .ev-activities-inner h2 { font-size: 28px; margin-bottom: 28px; }
+      .ev-act-grid { grid-template-columns: 1fr; }
+
+      /* Abstract */
+      .ev-abstract { padding: 60px var(--gutter); }
+      .ev-abstract > .ev-abstract-inner > h2 { font-size: 28px; }
+      .ev-abstract-card { border-radius: 24px; }
+      .ev-review-top { grid-template-columns: 1fr; gap: 16px; padding: 32px 20px 0; }
+      .ev-review-top h3 { font-size: 22px; }
+      .ev-steps { display: flex; flex-direction: column; gap: 0; padding: 24px 4px 32px; }
+      .ev-step { padding: 20px; }
+      .ev-step:nth-child(1) { border-radius: 20px 0 0 0; }
+      .ev-step:nth-child(2) { border-top: none; border-radius: 0; }
+      .ev-step:nth-child(3) { border-top: none; border-radius: 0; }
+      .ev-step:nth-child(4) { border-top: none; border-radius: 0 0 20px 20px; }
+      .ev-step-n { font-size: 40px; margin-bottom: 12px; }
+      .ev-step h4 { font-size: 18px; }
+      .ev-jrvcs { grid-template-columns: 1fr; }
+      .ev-jrvcs-left { padding: 32px 20px; }
+      .ev-jrvcs-left h3 { font-size: 22px; }
+      .ev-jrvcs-right { min-height: 160px; }
+      .ev-who-wrap { padding: 32px 4px 4px; }
+      .ev-who-card { padding: 28px; height: 500px; }
+      .ev-who-card::after {
+        background: linear-gradient(to bottom, rgba(13,12,63,0.95) 30%, rgba(13,12,63,0.5) 60%, rgba(13,12,63,0.08) 100%);
+      }
+      .ev-who-card--academics {
+        background:
+          url('Images/Event/mob_Img_Academics.png') center bottom / auto 60% no-repeat,
+          linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+        background-blend-mode: lighten, normal;
+      }
+      .ev-who-card--industry {
+        background:
+          url('Images/Event/mob_Img_Members.png') center bottom / auto 60% no-repeat,
+          linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+        background-blend-mode: lighten, normal;
+      }
+      .ev-who-card--public {
+        background:
+          url('Images/Event/mob_Img_PublicSector.png') center bottom / auto 60% no-repeat,
+          linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+        background-blend-mode: lighten, normal;
+      }
+      .ev-who-card--devt {
+        background:
+          url('Images/Event/mob_Img_Development.png') center bottom / auto 60% no-repeat,
+          linear-gradient(to bottom, #0D0C3F 0%, #0D0C3F 55%, #296D9D 100%);
+        background-blend-mode: lighten, normal;
+      }
+      .ev-who-grid { grid-template-columns: 1fr; }
+      .ev-who-row { display: contents; }
+
+      /* On-site */
+      .ev-onsite { min-height: 600px; align-items: flex-end; padding: 0 var(--gutter) 56px; }
+      .ev-onsite-inner { grid-template-columns: 1fr; gap: 10px; }
+      .ev-onsite h2 { font-size: 28px; line-height: 1.1; }
+
+      /* Register */
+      .ev-register {
+        flex-direction: column;
+        align-items: flex-start;
+        min-height: unset;
+        padding: 0;
+      }
+      .ev-register-inner { max-width: 100%; padding: 60px var(--gutter) 40px; }
+      .ev-register-art {
+        display: block;
+        position: relative;
+        right: auto; top: auto;
+        width: 100%;
+        height: 400px;
+      }
+      .ev-register-btns { flex-direction: column; }
+      .ev-register h2 { font-size: 28px; line-height: 1.1; }
+
+    }
+
+    /* Small phone — ≤ 479px */
+    @media (max-width: 479px) {
+      .ev-hero-heading { font-size: 36px; }
+      .ev-countdown { height: auto; padding: 0; }
+      .ev-cd-unit { padding: 16px 8px; }
+      .ev-cd-num { font-size: 20px; }
+      .ev-cd-label { font-size: 11px; }
+      .ev-info-stat { flex: none; width: 100%; font-size: 24px; font-family: var(--f-medium); font-weight: 700; letter-spacing: -0.4px; color: var(--navy); }
+      .ev-info-expanded-body { padding: 0 0 16px 0; }
+      .ev-info-col { padding-left: 8px; padding-right: 8px; }
+      .ev-info-col-value { font-size: 16px; }
+      .ev-step-n { font-size: 32px; }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       SCROLL ANIMATIONS
+    ══════════════════════════════════════════════════════ */
+    .sa {
+      opacity: 0;
+      will-change: opacity, transform;
+      transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sa.sa--visible             { opacity: 1; }
+    .sa-up.sa--visible          { transform: translateY(0); }
+    .sa-left.sa--visible        { transform: translateX(0); }
+    .sa-right.sa--visible       { transform: translateX(0); }
+    .sa-scale.sa--visible       { transform: scale(1) translateY(0); }
+    /* Fade only — no transform (used for hero image so spin JS isn't blocked) */
+    .sa-fade                    { /* opacity handled by .sa */ }
+    /* Hero image: suppress transform transition so JS spin runs unhindered */
+    .ev-hero-art img.sa         { transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1); }
+    .sa-up                      { transform: translateY(48px); }
+    .sa-left                    { transform: translateX(-56px); }
+    .sa-right                   { transform: translateX(56px); }
+    .sa-scale                   { transform: scale(0.94) translateY(20px); }
+
+    /* Badge stroke draw-in — replace static border with animated pseudo-element */
+    .ev-act-badge {
+      border-right: none;
+      position: relative;
+    }
+    .ev-act-badge::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 50%;
+      width: 4px; height: 0;
+      background: var(--cyan);
+      border-radius: 2px;
+      transform: translateY(-50%);
+      transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.35s;
+    }
+    .ev-act-item.sa--visible .ev-act-badge::after { height: 100%; }
+
+    /* ── Touch devices: disable all hover interactions ── */
+    @media (hover: none) {
+      .ev-info-row:hover .ev-info-stat { color: #002347; }
+      .ev-info-row:hover .ev-info-cols--img .ev-info-col {
+        height: auto; aspect-ratio: 3 / 2;
+        border-left: none; border-radius: 16px;
+        justify-content: flex-start; align-items: flex-start;
+        border-color: transparent; padding: 16px 20px;
+      }
+      .ev-info-row:hover .ev-info-cols--img .ev-info-col::before { opacity: 0; }
+      .ev-info-row:hover .ev-info-cols--img .ev-info-col::after  { opacity: 1; }
+      .ev-info-row:hover .ev-info-cols--img .ev-info-col-label { color: rgba(255,255,255,0.78); }
+      .ev-info-row:hover .ev-info-cols--img .ev-info-col-value  { color: #fff; font-size: 18px; font-style: normal; letter-spacing: 0; line-height: 1.3; }
+      .ev-info-row:hover .ev-info-expanded { grid-template-rows: 0fr; }
+      .ev-info-row:hover .ev-info-expanded-body { opacity: 0; }
+      .ev-info-row:hover .ev-info-cols--typo .ev-info-col { height: 60px; justify-content: center; align-items: flex-start; padding: 16px 24px; background: transparent; }
+      .ev-info-row:hover .ev-info-col-ghost { opacity: 0; }
+      .ev-info-row:hover .ev-info-col--year .ev-info-col-value,
+      .ev-info-row:hover .ev-info-col--month .ev-info-col-value {
+        font-size: 22px; font-weight: 400; letter-spacing: 0; line-height: 1.3; font-style: normal;
+      }
+      .ev-who-card:hover h3 { font-size: 22px; font-weight: 700; font-style: normal; letter-spacing: 0; line-height: 1.36; }
+      .ev-act-item:hover .ev-act-text h3 { font-size: 22px; font-style: normal; }
+      .ev-step:hover h4 { font-size: 18px; font-style: normal; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sa { transition-duration: 0.01ms !important; }
+      .ev-act-badge::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ── Header ─────────────────────────────────────────────── -->
+  <!-- ── Header ──────────────────────────────────────────────── -->
   <header class="site-header" role="banner">
     <div class="nav-inner">
       <a class="nav-logo" href="https://bluespectruminnovative.com/" aria-label="Bluespectrum Innovative — Home">
@@ -20,11 +1404,11 @@
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <ul role="list">
-          <li><a href="https://bluespectruminnovative.com/" class="active" aria-current="page">Home</a></li>
+          <li><a href="https://bluespectruminnovative.com/">Home</a></li>
           <li><a href="https://bluespectruminnovative.com/about">About</a></li>
           <li><a href="https://bluespectruminnovative.com/services">Services</a></li>
           <li><a href="https://bluespectruminnovative.com/community">Community</a></li>
-          <li><a href="events.html">Events</a></li>
+          <li><a href="/" class="active" aria-current="page">Events</a></li>
           <li><a href="https://bluespectruminnovative.com/contact">Contact Us</a></li>
         </ul>
       </nav>
@@ -39,7 +1423,7 @@
     </div>
   </header>
 
-  <!-- ── Mobile Menu ────────────────────────────────────────── -->
+  <!-- ── Mobile Menu ─────────────────────────────────────────── -->
   <dialog class="mobile-menu" id="mobile-menu" aria-label="Navigation menu">
     <button class="mobile-menu-close" aria-label="Close navigation menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
@@ -48,11 +1432,11 @@
     </button>
     <nav aria-label="Mobile navigation">
       <ul role="list">
-        <li><a href="https://bluespectruminnovative.com/" aria-current="page">Home</a></li>
+        <li><a href="https://bluespectruminnovative.com/">Home</a></li>
         <li><a href="https://bluespectruminnovative.com/about">About</a></li>
         <li><a href="https://bluespectruminnovative.com/services">Services</a></li>
         <li><a href="https://bluespectruminnovative.com/community">Community</a></li>
-        <li><a href="events.html">Events</a></li>
+        <li><a href="/" aria-current="page">Events</a></li>
         <li><a href="https://bluespectruminnovative.com/contact">Contact Us</a></li>
       </ul>
     </nav>
@@ -60,316 +1444,603 @@
 
   <main>
 
-    <!-- ── 1. Hero ─────────────────────────────────────────────── -->
-    <section class="hero" aria-label="Hero">
-      <div class="hero-inner">
-        <div class="eyebrow-tag hero-eyebrow" role="text">Welcome to Bluespectrum Innovative</div>
-        <div class="hero-cols">
-          <h1 class="hero-heading reveal-text">Engineering&nbsp;<br>Innovation for&nbsp;<br>Africa's Future</h1>
-          <div class="hero-right">
-            <p class="hero-description reveal-text">Bluespectrum Innovative builds, supports, and scales transformative solutions across technology, research, and enterprise. From AI and sustainable systems to digital transformation strategy, we turn ideas into commercially viable impact.</p>
-            <div class="hero-buttons">
-              <a href="services.html" class="btn btn-primary-cta">Explore What We Do</a>
-              <a href="contact.html" class="btn btn-secondary-cta">Partner with us</a>
+    <!-- ── 1. Hero ──────────────────────────────────────────── -->
+    <section class="ev-hero" aria-label="Conference hero">
+      <div class="ev-hero-body">
+        <div class="ev-hero-text">
+          <p class="ev-hero-subtitle">An annual academic conference on innovation, sustainability and waste repurposing, held across Nigeria and South Africa.</p>
+          <div class="ev-hero-bottom">
+            <h1 class="ev-hero-heading">Innovative<br>Research &amp; Sustainability<br>Conference 2027</h1>
+            <div class="ev-hero-btns">
+              <a href="https://bluespectruminnovative.com/contact" class="btn-ev-wl">
+                JOIN THE WAITLIST
+                <span class="btn-ev-wl-arr" aria-hidden="true"><img src="Icons/Arrow.svg" alt="" width="14" height="14" /></span>
+              </a>
+              <a href="https://bluespectruminnovative.com/contact" class="btn-ev-sp">BECOME A SPONSOR</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ev-hero-art" aria-hidden="true">
+          <img src="Images/Event/Recycle_Image.png" alt="" />
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── Countdown ─────────────────────────────────────────── -->
+    <div class="ev-countdown-wrap">
+      <div class="ev-countdown" role="timer" aria-label="Conference countdown">
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-days">77</span>
+          <span class="ev-cd-label">Days</span>
+        </div>
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-hrs">00</span>
+          <span class="ev-cd-label">Hrs</span>
+        </div>
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-min">00</span>
+          <span class="ev-cd-label">Min</span>
+        </div>
+        <div class="ev-cd-unit">
+          <span class="ev-cd-num" id="cd-sec">00</span>
+          <span class="ev-cd-label">Sec</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 2. About the Conference ──────────────────────────── -->
+    <section class="ev-about" aria-labelledby="ev-about-heading">
+      <div class="ev-about-inner">
+        <div class="ev-label ev-label--center" role="text">About the Conference</div>
+        <h2 id="ev-about-heading">Innovation, Sustainability<br>&amp; Waste Repurposing</h2>
+        <p>The primary focus of the annual conference is Innovation, Sustainability, and Waste Repurposing. These interconnected areas have received increasing attention globally across academia, government, and the private sector, reflecting growing recognition of the need for approaches that support environmental sustainability and contribute to the achievement of the Sustainable Development Goals.</p>
+      </div>
+    </section>
+
+    <!-- ── 3. Conference Info ────────────────────────────────── -->
+    <section class="ev-info">
+      <div class="ev-info-inner">
+        <div class="ev-label" role="text">Conference Time, Locations &amp; Event Types</div>
+
+        <!-- Same Year -->
+        <div class="ev-info-row">
+          <div class="ev-info-compact">
+            <div class="ev-info-stat">Same Year</div>
+            <div class="ev-info-cols ev-info-cols--typo">
+              <div class="ev-info-col ev-info-col--year">
+                <span class="ev-info-col-label">Year</span>
+                <span class="ev-info-col-value">202<span class="ev-cyan">7</span></span>
+                <span class="ev-info-col-ghost" aria-hidden="true">2027</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Months -->
+        <div class="ev-info-row">
+          <div class="ev-info-compact">
+            <div class="ev-info-stat">2 Months</div>
+            <div class="ev-info-cols ev-info-cols--typo">
+              <div class="ev-info-col ev-info-col--month">
+                <span class="ev-info-col-label">Month 1</span>
+                <span class="ev-info-col-value">Octo<span class="ev-cyan">ber</span></span>
+                <span class="ev-info-col-ghost" aria-hidden="true">10/12</span>
+              </div>
+              <div class="ev-info-col ev-info-col--month">
+                <span class="ev-info-col-label">Month 2</span>
+                <span class="ev-info-col-value">Novem<span class="ev-cyan">ber</span></span>
+                <span class="ev-info-col-ghost" aria-hidden="true">11/12</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Universities -->
+        <div class="ev-info-row">
+          <div class="ev-info-compact">
+            <div class="ev-info-stat">2 Universities</div>
+            <div class="ev-info-cols ev-info-cols--img">
+              <div class="ev-info-col ev-info-img-card--uni1">
+                <span class="ev-info-col-label">Venue 1</span>
+                <span class="ev-info-col-value">Babcock University</span>
+              </div>
+              <div class="ev-info-col ev-info-img-card--uni2">
+                <span class="ev-info-col-label">Venue 2</span>
+                <span class="ev-info-col-value">Sol Plaatje University</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Countries -->
+        <div class="ev-info-row">
+          <div class="ev-info-compact">
+            <div class="ev-info-stat">2 Countries</div>
+            <div class="ev-info-cols ev-info-cols--img">
+              <div class="ev-info-col ev-info-img-card--ng">
+                <span class="ev-info-col-label">Country 1</span>
+                <span class="ev-info-col-value">Nigeria</span>
+              </div>
+              <div class="ev-info-col ev-info-img-card--sa">
+                <span class="ev-info-col-label">Country 2</span>
+                <span class="ev-info-col-value">South Africa</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Cities -->
+        <div class="ev-info-row">
+          <div class="ev-info-compact">
+            <div class="ev-info-stat">2 Cities</div>
+            <div class="ev-info-cols ev-info-cols--img">
+              <div class="ev-info-col ev-info-img-card--city1">
+                <span class="ev-info-col-label">City 1</span>
+                <span class="ev-info-col-value">Ilishan Remo, Ogun</span>
+              </div>
+              <div class="ev-info-col ev-info-img-card--city2">
+                <span class="ev-info-col-label">City 2</span>
+                <span class="ev-info-col-value">Kimberley, SA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Events -->
+        <div class="ev-info-row">
+          <div class="ev-info-compact">
+            <div class="ev-info-stat">2 Events</div>
+            <div class="ev-info-cols ev-info-cols--img">
+              <div class="ev-info-col ev-info-img-card--conf">
+                <span class="ev-info-col-label">In both locations</span>
+                <span class="ev-info-col-value">Academic Conference</span>
+              </div>
+              <div class="ev-info-col ev-info-img-card--award">
+                <span class="ev-info-col-label">In both locations</span>
+                <span class="ev-info-col-value">Africa Scholar Award</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 4. Activities To Expect ─────────────────────────── -->
+    <section class="ev-activities" aria-labelledby="ev-activities-heading">
+      <div class="ev-activities-inner">
+        <h2 id="ev-activities-heading">Activities To Expect</h2>
+        <div class="ev-act-grid">
+          <div class="ev-act-item">
+            <div class="ev-act-badge">01</div>
+            <div class="ev-act-text">
+              <h3>Full Access</h3>
+              <p>Access to all conference sessions, poster presentations and the exhibition area.</p>
+            </div>
+          </div>
+          <div class="ev-act-item">
+            <div class="ev-act-badge">02</div>
+            <div class="ev-act-text">
+              <h3>Publication and Indexing</h3>
+              <p>Abstracts and proceedings indexed in scholarly databases with DOI availability</p>
+            </div>
+          </div>
+          <div class="ev-act-item">
+            <div class="ev-act-badge">03</div>
+            <div class="ev-act-text">
+              <h3>Conference Kit</h3>
+              <p>A conference package with name tag, programme booklet and abstract book</p>
+            </div>
+          </div>
+          <div class="ev-act-item">
+            <div class="ev-act-badge">04</div>
+            <div class="ev-act-text">
+              <h3>Lunch</h3>
+              <p>Coffee, tea, juice, snacks and lunch on each conference day</p>
+            </div>
+          </div>
+          <div class="ev-act-item">
+            <div class="ev-act-badge">05</div>
+            <div class="ev-act-text">
+              <h3>Certification</h3>
+              <p>Accreditation certificate issued upon completion of the conference</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="hero-images" aria-hidden="true">
-        <div class="hero-img-card hero-img-card--left">
-          <div class="hero-img-bg hero-img-bg--1"></div>
+    </section>
+
+    <!-- ── 5. Abstract Submission ────────────────────────────── -->
+    <section class="ev-abstract" aria-labelledby="ev-abstract-heading">
+      <div class="ev-abstract-inner">
+        <div class="ev-label" role="text">Abstract Process, Publication &amp; Participation</div>
+        <h2 id="ev-abstract-heading">Info on Abstract Submission</h2>
+
+        <!-- Rounded card wrapping all 3 sub-sections -->
+        <div class="ev-abstract-card">
+
+          <!-- Review process box -->
+          <div class="ev-review-box">
+            <div class="ev-review-top">
+              <h3>How abstracts<br>are reviewed</h3>
+              <p>All abstracts undergo an initial screening by the internal committee to assess their alignment with the conference scope and requirements.</p>
+            </div>
+            <!-- Step cards: white→light-blue gradient, r=20, large number 56px -->
+            <div class="ev-steps">
+              <div class="ev-step">
+                <span class="ev-step-n">1</span>
+                <h4>Submission</h4>
+                <p>Abstracts are submitted once registration opens.</p>
+              </div>
+              <div class="ev-step">
+                <span class="ev-step-n">2</span>
+                <h4>Initial Screening</h4>
+                <p>The internal committee checks alignment with the conference scope and requirements.</p>
+              </div>
+              <div class="ev-step">
+                <span class="ev-step-n">3</span>
+                <h4>Evaluation</h4>
+                <p>Overall evaluation and, where applicable, reviewer feedback.</p>
+              </div>
+              <div class="ev-step">
+                <span class="ev-step-n">4</span>
+                <h4>Decision</h4>
+                <p>The committee recommends acceptance, rejection, or revision.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- JRVCS Publication Banner — dark left (Hero.png), light-cyan right -->
+          <div class="ev-jrvcs">
+            <div class="ev-jrvcs-left">
+              <h3>To be Published in the Journal of Resource Valorization and Circular Systems (JRVCS)</h3>
+              <p>Accepted contributions are expected to receive DOI assignment, providing a formal record of accepted conference papers and enhancing their accessibility and visibility to the academic and research community. Subject to the journal&#x27;s publication and indexing processes.</p>
+              <a href="https://bluespectruminnovative.com/contact" class="btn-ev-wl" style="width: fit-content">
+                Join the Waitlist
+                <span class="btn-ev-wl-arr" aria-hidden="true"></span>
+              </a>
+            </div>
+            <div class="ev-jrvcs-right">
+              <img src="logos/JRVCS logo.svg" alt="Journal of Resource Valorization and Circular Systems" class="ev-jrvcs-logo" />
+            </div>
+          </div>
+
+          <!-- Who can participate — 2×2 gradient cards -->
+          <div class="ev-who-wrap">
+            <h2 class="ev-who-heading">Who can<br>participate</h2>
+            <div class="ev-who-grid">
+
+          <div class="ev-who-row">
+            <div class="ev-who-card ev-who-card--academics">
+              <div class="ev-who-inner">
+                <h3>Academics<br>&amp; Researchers</h3>
+                <div class="ev-who-bar"></div>
+                <ul class="ev-who-list">
+                  <li>Researchers &amp; academic staff</li>
+                  <li>Research institutes</li>
+                  <li>Postdoctoral fellows</li>
+                  <li>Postgraduate students</li>
+                  <li>Undergraduate students</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="ev-who-card ev-who-card--industry">
+              <div class="ev-who-inner">
+                <h3>Members<br>of Industry</h3>
+                <div class="ev-who-bar"></div>
+                <ul class="ev-who-list">
+                  <li>Industry Professionals &amp; Reps</li>
+                  <li>Private Sector Organizations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="ev-who-row">
+            <div class="ev-who-card ev-who-card--public">
+              <div class="ev-who-inner">
+                <h3>Public Sector<br>Professionals</h3>
+                <div class="ev-who-bar"></div>
+                <ul class="ev-who-list">
+                  <li>Government Employees</li>
+                  <li>Office Holders</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="ev-who-card ev-who-card--devt">
+              <div class="ev-who-inner">
+                <h3>Development<br>Sector Professionals</h3>
+                <div class="ev-who-bar"></div>
+                <ul class="ev-who-list">
+                  <li>Non-Governmental Organizations</li>
+                  <li>Relevant civil-society organizations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          </div><!-- /ev-who-grid -->
+          </div><!-- /ev-who-wrap -->
+        </div><!-- /ev-abstract-card -->
+      </div>
+    </section>
+
+    <!-- ── 6. On-Site Participation Only ────────────────────── -->
+    <section class="ev-onsite" aria-labelledby="ev-onsite-heading">
+      <div class="ev-onsite-rows" aria-hidden="true"></div>
+      <div class="ev-onsite-inner">
+        <div class="ev-onsite-label-col">
+          <div class="ev-label ev-label--light" role="text">Participation Type</div>
         </div>
-        <div class="hero-img-card hero-img-card--center">
-          <div class="hero-img-bg hero-img-bg--2"></div>
-        </div>
-        <div class="hero-img-card hero-img-card--right">
-          <div class="hero-img-bg hero-img-bg--3"></div>
+        <div>
+          <h2 id="ev-onsite-heading">On-Site<br>Participation Only</h2>
+          <p>We are unable to take virtual participants at this time.</p>
         </div>
       </div>
     </section>
 
-    <!-- ── 2. Research / Impact ───────────────────────────────── -->
-    <section class="research-section" aria-labelledby="research-heading">
-      <div class="research-inner">
-        <h2 class="research-heading reveal-text" id="research-heading">Where Research&nbsp;<br>Meets Real-World Impact</h2>
-        <div class="research-right">
-          <p>Bluespectrum Innovative is a forward-focused innovation company dedicated to research, development, commercialization, and strategic support for emerging technologies. We work at the intersection of science, technology, and enterprise to design solutions that are scalable, sustainable, and commercially viable. Our mission is simple: build innovation systems that move industries and societies forward.</p>
-          <a href="services.html" class="btn-outline-light">Learn More</a>
+    <!-- ── 7. Registration CTA ───────────────────────────────── -->
+    <section class="ev-register" aria-labelledby="ev-reg-heading">
+      <div class="ev-register-inner">
+        <div class="ev-label ev-label--light ev-label--border-left" role="text">Registration</div>
+        <h2 id="ev-reg-heading">Join waitlist<br>or Become a Sponsor</h2>
+        <p>Connect, engage and showcase your organization</p>
+        <div class="ev-register-btns">
+          <a href="https://bluespectruminnovative.com/contact" class="btn-ev-wl">
+            JOIN THE WAITLIST
+            <span class="btn-ev-wl-arr" aria-hidden="true"><img src="Icons/Arrow.svg" alt="" width="14" height="14" /></span>
+          </a>
+          <a href="https://bluespectruminnovative.com/contact" class="btn-ev-sp">BECOME A SPONSOR</a>
         </div>
       </div>
-    </section>
-
-    <!-- ── 3. Services Carousel ───────────────────────────────── -->
-    <section class="services-section" id="services" aria-labelledby="services-heading">
-      <div class="services-header">
-        <div class="eyebrow-tag section-eyebrow--muted" role="text">What we do</div>
-        <h2 class="section-heading reveal-text" id="services-heading">Innovation Across&nbsp;<br>the Entire Value Chain</h2>
-      </div>
-
-      <div class="services-carousel-wrapper">
-        <ul class="services-track" id="services-track" aria-label="Our services">
-
-          <li class="service-card">
-            <div class="service-card-art" aria-hidden="true">
-              <svg viewBox="0 0 234 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="117" cy="108" r="80" stroke="rgba(66,200,244,0.25)" stroke-width="1.5"/>
-                <circle cx="117" cy="108" r="52" stroke="rgba(66,200,244,0.18)" stroke-width="1"/>
-                <circle cx="117" cy="108" r="22" fill="rgba(66,200,244,0.1)"/>
-                <line x1="37" y1="108" x2="197" y2="108" stroke="rgba(66,200,244,0.12)" stroke-width="1"/>
-                <line x1="117" y1="28" x2="117" y2="188" stroke="rgba(66,200,244,0.12)" stroke-width="1"/>
-                <ellipse cx="117" cy="108" rx="80" ry="30" stroke="rgba(66,200,244,0.12)" stroke-width="1"/>
-                <circle cx="117" cy="108" r="5" fill="rgb(66,200,244)"/>
-                <circle cx="37"  cy="108" r="3" fill="rgba(66,200,244,0.5)"/>
-                <circle cx="197" cy="108" r="3" fill="rgba(66,200,244,0.5)"/>
-              </svg>
-            </div>
-            <div class="service-card-content">
-              <h3>Research &amp;&nbsp;<br>Product Development</h3>
-              <p>We design &amp; develop innovative products and systems powered by AI, IoT, blockchain, renewable energy, and advanced materials.</p>
-            </div>
-          </li>
-
-          <li class="service-card">
-            <div class="service-card-art" aria-hidden="true">
-              <svg viewBox="0 0 234 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="67" y="62" width="100" height="96" rx="8" stroke="rgba(66,200,244,0.28)" stroke-width="1.5"/>
-                <line x1="117" y1="32" x2="117" y2="62" stroke="rgba(66,200,244,0.28)" stroke-width="1.5"/>
-                <circle cx="117" cy="26" r="8" fill="rgba(66,200,244,0.15)" stroke="rgba(66,200,244,0.5)" stroke-width="1.5"/>
-                <line x1="87"  y1="185" x2="87"  y2="158" stroke="rgba(66,200,244,0.22)" stroke-width="1.5"/>
-                <line x1="117" y1="185" x2="117" y2="158" stroke="rgba(66,200,244,0.22)" stroke-width="1.5"/>
-                <line x1="147" y1="185" x2="147" y2="158" stroke="rgba(66,200,244,0.22)" stroke-width="1.5"/>
-                <circle cx="87"  cy="190" r="4" fill="rgba(66,200,244,0.35)"/>
-                <circle cx="117" cy="190" r="4" fill="rgba(66,200,244,0.35)"/>
-                <circle cx="147" cy="190" r="4" fill="rgba(66,200,244,0.35)"/>
-                <path d="M97 107 L107 117 L127 97" stroke="rgb(66,200,244)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="service-card-content">
-              <h3>Innovation Strategy &amp;&nbsp;<br>Digital Transformation</h3>
-              <p>We help organizations rethink products, operations, and business models for a digital-first future.</p>
-            </div>
-          </li>
-
-          <li class="service-card">
-            <div class="service-card-art" aria-hidden="true">
-              <svg viewBox="0 0 234 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M117 28 L172 60 L172 122 C172 158 148 183 117 193 C86 183 62 158 62 122 L62 60 Z" stroke="rgba(66,200,244,0.35)" stroke-width="1.5" fill="rgba(66,200,244,0.04)"/>
-                <path d="M117 52 L154 74 L154 120 C154 147 138 165 117 172 C96 165 80 147 80 120 L80 74 Z" stroke="rgba(66,200,244,0.18)" stroke-width="1" fill="none"/>
-                <circle cx="117" cy="116" r="9" fill="rgba(66,200,244,0.18)" stroke="rgba(66,200,244,0.6)" stroke-width="1.5"/>
-                <path d="M117 107 L117 89" stroke="rgb(66,200,244)" stroke-width="2" stroke-linecap="round"/>
-                <path d="M117 125 L117 127" stroke="rgb(66,200,244)" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="service-card-content">
-              <h3>Intellectual Property &amp;&nbsp;<br>Commercialization</h3>
-              <p>We develop, protect, license, and monetize patents, software, algorithms, and proprietary technologies.</p>
-            </div>
-          </li>
-
-          <li class="service-card">
-            <div class="service-card-art" aria-hidden="true">
-              <svg viewBox="0 0 234 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="80"  cy="80"  r="28" stroke="rgba(66,200,244,0.35)" stroke-width="1.5" fill="rgba(66,200,244,0.05)"/>
-                <circle cx="154" cy="80"  r="28" stroke="rgba(66,200,244,0.35)" stroke-width="1.5" fill="rgba(66,200,244,0.05)"/>
-                <circle cx="117" cy="148" r="28" stroke="rgba(66,200,244,0.35)" stroke-width="1.5" fill="rgba(66,200,244,0.05)"/>
-                <line x1="102" y1="92"  x2="132" y2="92"  stroke="rgba(66,200,244,0.25)" stroke-width="1"/>
-                <line x1="92"  y1="101" x2="104" y2="128" stroke="rgba(66,200,244,0.25)" stroke-width="1"/>
-                <line x1="142" y1="101" x2="130" y2="128" stroke="rgba(66,200,244,0.25)" stroke-width="1"/>
-                <circle cx="80"  cy="80"  r="4" fill="rgba(66,200,244,0.6)"/>
-                <circle cx="154" cy="80"  r="4" fill="rgba(66,200,244,0.6)"/>
-                <circle cx="117" cy="148" r="4" fill="rgb(66,200,244)"/>
-              </svg>
-            </div>
-            <div class="service-card-content">
-              <h3>Partnerships &amp;&nbsp;<br>Ecosystem Development</h3>
-              <p>We collaborate with universities, research institutes, startups, and enterprises to accelerate innovation.</p>
-            </div>
-          </li>
-
-          <li class="service-card">
-            <div class="service-card-art" aria-hidden="true">
-              <svg viewBox="0 0 234 217" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="57" y="142" width="120" height="8" rx="2" fill="rgba(66,200,244,0.25)"/>
-                <rect x="78" y="55" width="78" height="92" rx="4" stroke="rgba(66,200,244,0.28)" stroke-width="1.5" fill="rgba(66,200,244,0.04)"/>
-                <line x1="93"  y1="80"  x2="141" y2="80"  stroke="rgba(66,200,244,0.45)" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="93"  y1="95"  x2="141" y2="95"  stroke="rgba(66,200,244,0.28)" stroke-width="1"   stroke-linecap="round"/>
-                <line x1="93"  y1="110" x2="125" y2="110" stroke="rgba(66,200,244,0.28)" stroke-width="1"   stroke-linecap="round"/>
-                <path d="M117 150 L117 168" stroke="rgba(66,200,244,0.35)" stroke-width="2"/>
-                <circle cx="117" cy="38" r="13" fill="rgba(66,200,244,0.08)" stroke="rgba(66,200,244,0.4)" stroke-width="1.5"/>
-                <path d="M113 37 L117 41 L122 34" stroke="rgb(66,200,244)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div class="service-card-content">
-              <h3>Innovation Education &amp;&nbsp;<br>Capacity Building</h3>
-              <p>We organize seminars, workshops, exhibitions, and training programs that drive technological advancement.</p>
-            </div>
-          </li>
-
-        </ul>
-
-        <button class="carousel-btn carousel-btn--prev" id="carousel-prev" aria-label="Previous services">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="carousel-btn carousel-btn--next" id="carousel-next" aria-label="Next services">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-      </div>
-    </section>
-
-    <!-- ── 4. Approach ────────────────────────────────────────── -->
-    <section class="approach-section" aria-labelledby="approach-heading">
-      <div class="approach-header">
-        <div class="eyebrow-tag section-eyebrow--muted" role="text">Our Approach</div>
-        <h2 class="section-heading reveal-text" id="approach-heading">From Concept&nbsp;<br>to Commercialization</h2>
-      </div>
-      <div class="approach-grid">
-        <div class="approach-card">
-          <span class="approach-num" aria-hidden="true">1</span>
-          <h3 class="approach-title">Discover</h3>
-          <p>Research-driven insights. Market validation. Feasibility analysis.</p>
-        </div>
-        <div class="approach-card">
-          <span class="approach-num" aria-hidden="true">2</span>
-          <h3 class="approach-title">Develop</h3>
-          <p>Prototype design. Engineering. Testing. Refinement.</p>
-        </div>
-        <div class="approach-card">
-          <span class="approach-num" aria-hidden="true">3</span>
-          <h3 class="approach-title">Protect</h3>
-          <p>IP development. Legal structuring. Licensing frameworks</p>
-        </div>
-        <div class="approach-card">
-          <span class="approach-num" aria-hidden="true">4</span>
-          <h3 class="approach-title">Scale</h3>
-          <p>Capital structuring. Strategic partnerships. Market expansion.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 5. Vision ──────────────────────────────────────────── -->
-    <section class="vision-section" aria-labelledby="vision-heading">
-      <div class="vision-inner">
-        <div class="eyebrow-tag" role="text">Our Vision</div>
-        <h2 class="vision-heading reveal-text" id="vision-heading">We operate with a&nbsp;<br>global outlook while solving&nbsp;<br>problems rooted in local realities.</h2>
-        <p class="vision-body">Through strategic partnerships, subsidiaries, and cross-border collaboration, we enable technology transfer, knowledge exchange, and sustainable innovation growth.</p>
-      </div>
-      <div class="vision-globe" aria-hidden="true">
-        <img src="assets/globe.png" alt="" />
-      </div>
-    </section>
-
-    <!-- ── 6. Final CTA ───────────────────────────────────────── -->
-    <section class="cta-final" aria-labelledby="cta-heading">
-      <div class="cta-inner">
-        <div class="cta-text">
-          <div class="eyebrow-tag" role="text">Get Started</div>
-          <h2 class="cta-heading reveal-text" id="cta-heading">Let's Build&nbsp;<br>the Future Together</h2>
-          <p>Whether you are an enterprise seeking transformation, a researcher with breakthrough ideas, or an investor looking for high-impact innovation, Bluespectrum Innovative is ready to collaborate.</p>
-          <a href="contact.html" class="btn btn-secondary-cta">Start a Conversation</a>
-        </div>
-        <div class="cta-photo">
-          <img src="assets/cta-photo.png" alt="Bluespectrum Innovative — collaboration" />
-        </div>
+      <!-- Right: artwork fills the right half of the section -->
+      <div class="ev-register-art" aria-hidden="true">
+        <img src="Images/Event/Last CTA Image.png" alt="" />
       </div>
     </section>
 
   </main>
 
-  <!-- ── Footer ────────────────────────────────────────────────── -->
+  <!-- ── Events Footer ───────────────────────────────────────── -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
 
-      <div class="footer-logo-row">
-        <a href="index.html" aria-label="Bluespectrum Innovative — Home">
-          <img src="assets/logo.png" alt="Bluespectrum Innovative" height="72" class="footer-logo" />
-        </a>
+      <!-- Centered logo -->
+      <div class="footer-logo-wrap">
+        <img src="assets/logo.png" alt="Bluespectrum Innovative" class="footer-logo" />
       </div>
 
-      <div class="footer-columns">
+      <!-- Horizontal divider -->
+      <div class="footer-divider"></div>
 
-        <div class="footer-col">
-          <p class="footer-label">CONTACT</p>
-          <div class="footer-contact-item">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
-              <rect width="48" height="48" rx="12" fill="rgba(255,255,255,0.06)"/>
-              <path d="M15 17h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H15a1 1 0 0 1-1-1V18a1 1 0 0 1 1-1z" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" fill="none"/>
-              <path d="M14 18l10 8 10-8" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+      <!-- Main content: contact + social -->
+      <div class="footer-cols">
+
+        <!-- Contact info -->
+        <div class="footer-contact-list">
+          <div class="footer-contact-row">
+            <div class="footer-contact-icon" aria-hidden="true">
+              <img src="Icons/Icon_phone.svg" width="24" height="24" alt="" />
+            </div>
             <div>
-              <a href="tel:+27630224992" class="footer-contact-link">+27630224992 (South Africa)</a>
-              <a href="tel:+2349066534722" class="footer-contact-link">+2349066534722 (Nigeria)</a>
+              <span class="footer-contact-label">CONTACT</span>
+              <a href="tel:+2349066534722" class="footer-contact-val">+234 906 6653 4722</a>
             </div>
           </div>
-        </div>
-
-        <div class="footer-col">
-          <p class="footer-label">EMAIL</p>
-          <div class="footer-contact-item">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
-              <rect width="48" height="48" rx="12" fill="rgba(255,255,255,0.06)"/>
-              <path d="M15 17h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H15a1 1 0 0 1-1-1V18a1 1 0 0 1 1-1z" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" fill="none"/>
-              <path d="M14 18l10 8 10-8" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
+          <div class="footer-contact-row">
+            <div class="footer-contact-icon" aria-hidden="true">
+              <img src="Icons/Icon_mail.svg" width="24" height="24" alt="" />
+            </div>
             <div>
-              <!-- Note: visible address is info@bluespectruminnovative.com. Source has typo "innonative" — using correct address pending owner confirmation. -->
-              <a href="mailto:info@bluespectruminnovative.com" class="footer-contact-link">info@bluespectruminnovative.com</a>
+              <span class="footer-contact-label">EMAIL</span>
+              <a href="mailto:bluespectrumchemical@gmail.com" class="footer-contact-val">bluespectrumchemical@gmail.com</a>
             </div>
           </div>
-        </div>
-
-        <div class="footer-col">
-          <p class="footer-label">OFFICE LOCATION</p>
-          <div class="footer-contact-item">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
-              <rect width="48" height="48" rx="12" fill="rgba(255,255,255,0.06)"/>
-              <path d="M24 13C20.686 13 18 15.686 18 19C18 24.5 24 34 24 34C24 34 30 24.5 30 19C30 15.686 27.314 13 24 13Z" stroke="rgba(207,212,220,0.7)" stroke-width="1.5" fill="none"/>
-              <circle cx="24" cy="19" r="2.5" stroke="rgba(207,212,220,0.7)" stroke-width="1.5"/>
-            </svg>
+          <div class="footer-contact-row">
+            <div class="footer-contact-icon" aria-hidden="true">
+              <img src="Icons/Icon_location.svg" width="24" height="24" alt="" />
+            </div>
             <div>
-              <p class="footer-contact-text">4a, Chief Adebisi Odumade Close, Off Trinity Street Igbogbo, Ikorodu, Lagos, Nigeria.</p>
+              <span class="footer-contact-label">OFFICE LOCATION</span>
+              <span class="footer-contact-val">4a, Chief Adebisi Odumade Close, Off Trinity Street Igbogbo, Ikorodu, Lagos, Nigerian.</span>
             </div>
           </div>
         </div>
 
-        <div class="footer-col">
-          <p class="footer-label">OUR SUBSIDIARY</p>
-          <div class="footer-contact-item footer-subsidiary-row">
-            <img src="assets/subsidiary-logo.png" alt="Bluespectrum Chemical Labs" class="subsidiary-logo" />
-            <p class="footer-contact-text">Bluespectrum Chemical Labs</p>
+        <!-- Social links -->
+        <div class="footer-social-col">
+          <div class="footer-social-main">
+            <div class="footer-social-grp">
+              <span class="footer-social-grp-lbl">X (TWITTER)</span>
+              <a href="https://twitter.com/_bluespectrum" class="footer-soc-btn" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <img src="Icons/icon_x.svg" width="24" height="24" alt="" />
+              </a>
+            </div>
+            <div class="footer-social-grp">
+              <span class="footer-social-grp-lbl">TIKTOK</span>
+              <a href="https://www.tiktok.com/@bluespectrum_inno" class="footer-soc-btn" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <img src="Icons/Icon_tiktok.svg" width="24" height="24" alt="" />
+              </a>
+            </div>
           </div>
-
-          <div class="footer-social">
-            <p class="footer-label">FIND US ON:</p>
-            <div class="footer-social-icons">
-              <div class="social-group">
-                <p class="footer-label social-platform-label">TIKTOK</p>
-                <a href="https://www.tiktok.com/@bluespectrum_inno" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.01a8.16 8.16 0 004.77 1.52V7.07a4.85 4.85 0 01-1-.38z"/></svg>
-                </a>
-              </div>
-              <div class="social-group">
-                <p class="footer-label social-platform-label">X (TWITTER)</p>
-                <a href="https://twitter.com/_bluespectrum" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                </a>
-              </div>
+          <div>
+            <span class="footer-find-lbl">FIND US ON:</span>
+            <div class="footer-social-sm">
+              <a href="#" class="footer-soc-btn" aria-label="Telegram"><img src="Icons/Icon_telegram.svg" width="24" height="24" alt="" /></a>
+              <a href="#" class="footer-soc-btn" aria-label="YouTube"><img src="Icons/Icon_youtube.svg" width="24" height="24" alt="" /></a>
+              <a href="#" class="footer-soc-btn" aria-label="Threads"><img src="Icons/Icon_thread.svg" width="24" height="24" alt="" /></a>
+              <a href="#" class="footer-soc-btn" aria-label="Facebook"><img src="Icons/icon_fb.svg" width="24" height="24" alt="" /></a>
+              <a href="#" class="footer-soc-btn" aria-label="LinkedIn"><img src="Icons/icon_linkedin.svg" width="24" height="24" alt="" /></a>
             </div>
           </div>
         </div>
 
-      </div><!-- /footer-columns -->
-
-      <div class="footer-bottom">
-        <p>© 2026 Bluespectrum Innovative. All rights reserved.</p>
       </div>
 
-    </div><!-- /footer-inner -->
+      <!-- Copyright bar -->
+      <div class="footer-copy">
+        <p>&copy; 2025 Blue Spectrum Chemical Labs. All rights reserved.</p>
+        <div class="footer-links"></div>
+      </div>
+
+    </div>
   </footer>
+    <script src="https://unpkg.com/lenis@1.3.27/dist/lenis.min.js"></script>
+    <script>
+      new Lenis({
+        autoRaf: true,
+        autoToggle: true,
+        anchors: true,
+        allowNestedScroll: true,
+        naiveDimensions: true,
+        stopInertiaOnNavigate: true
+      });
+    </script>
+    <script src="script.js"></script>
+  <script>
+    /* ── Button cursor-spotlight ── */
+    document.querySelectorAll('.btn-ev-wl, .btn-ev-sp').forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        btn.style.setProperty('--cursor-x', (e.clientX - r.left) + 'px');
+        btn.style.setProperty('--cursor-y', (e.clientY - r.top)  + 'px');
+      });
+      btn.addEventListener('mouseleave', function () {
+        btn.style.setProperty('--cursor-x', '-200px');
+        btn.style.setProperty('--cursor-y', '-200px');
+      });
+    });
 
-  <script src="script.js"></script>
+    /* ── Countdown to IRSC 2027 ── */
+    (function () {
+      const target = new Date('2027-10-01T09:00:00');
+      const els = {
+        d: document.getElementById('cd-days'),
+        h: document.getElementById('cd-hrs'),
+        m: document.getElementById('cd-min'),
+        s: document.getElementById('cd-sec')
+      };
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function tick() {
+        const diff = target - Date.now();
+        if (diff <= 0) {
+          els.d.textContent = els.h.textContent = els.m.textContent = els.s.textContent = '00';
+          return;
+        }
+        els.d.textContent = pad(Math.floor(diff / 86400000));
+        els.h.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+        els.m.textContent = pad(Math.floor((diff % 3600000) / 60000));
+        els.s.textContent = pad(Math.floor((diff % 60000) / 1000));
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    /* ── Scroll animations ── */
+    (function () {
+      // sa() — revealed by IntersectionObserver on scroll
+      function sa(selector, anim, delay) {
+        document.querySelectorAll(selector).forEach(function (el, i) {
+          el.classList.add('sa', 'sa-' + anim);
+          var d = typeof delay === 'function' ? delay(i) : (delay || 0);
+          if (d) el.style.transitionDelay = d + 's';
+        });
+      }
+      // saLoad() — above-the-fold; revealed on window load, not scroll
+      function saLoad(selector, anim, delay) {
+        document.querySelectorAll(selector).forEach(function (el, i) {
+          el.classList.add('sa', 'sa-' + anim, 'sa-onload');
+          var d = typeof delay === 'function' ? delay(i) : (delay || 0);
+          if (d) el.style.transitionDelay = d + 's';
+        });
+      }
+
+      // 1. Hero — load-triggered, not scroll
+      saLoad('.ev-hero-subtitle', 'up',   0.08);
+      saLoad('.ev-hero-heading',  'up',   0.22);
+      saLoad('.ev-hero-btns',     'up',   0.38);
+      saLoad('.ev-hero-art img',  'fade', 0.1); // fade only — spin JS controls transform
+
+      // 2. Countdown handled by @keyframes cd-rise in CSS (transform conflict workaround)
+
+      // 3. About
+      sa('.ev-about .ev-label',    'up', 0);
+      sa('#ev-about-heading',      'up', 0.12);
+      sa('.ev-about-inner p',      'up', 0.22);
+
+      // 4. Info rows — stagger by index
+      sa('.ev-info-row', 'left', function (i) { return i * 0.06; });
+
+      // 5. Activities
+      sa('#ev-activities-heading', 'up', 0);
+      sa('.ev-act-item', 'up', function (i) { return i * 0.09; });
+
+      // 6. Abstract
+      sa('.ev-abstract > .ev-abstract-inner > .ev-label', 'up',    0);
+      sa('#ev-abstract-heading',                          'up',    0.12);
+      sa('.ev-review-top h3',                             'left',  0);
+      sa('.ev-review-top p',                              'up',    0.14);
+      sa('.ev-step',   'up',    function (i) { return i * 0.1; });
+      sa('.ev-jrvcs-left',  'left',  0);
+      sa('.ev-jrvcs-right', 'right', 0.18);
+      sa('.ev-who-card', 'scale', function (i) { return i * 0.1; });
+
+      // 7. On-site
+      sa('.ev-onsite .ev-label', 'left',  0);
+      sa('#ev-onsite-heading',   'right', 0.12);
+      sa('.ev-onsite p',         'up',    0.22);
+
+      // 8. Register CTA
+      sa('.ev-register-inner', 'left',  0);
+      sa('.ev-register-art',   'right', 0.18);
+
+      // Observer — fires once per element
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('sa--visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -48px 0px' });
+
+      // Reveal load-triggered elements on window load
+      window.addEventListener('load', function () {
+        document.querySelectorAll('.sa-onload').forEach(function (el) {
+          el.classList.add('sa--visible');
+        });
+      });
+
+      // IO observes scroll elements only (not above-fold)
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          document.querySelectorAll('.sa:not(.sa-onload)').forEach(function (el) { io.observe(el); });
+        });
+      });
+    })();
+
+    /* ── Hero image: continuous spin ── */
+    (function () {
+      var img = document.querySelector('.ev-hero-art img');
+      if (!img) return;
+      var angle = 0, lastTime = null;
+      var DEG_PER_SEC = 9; // 40s per full rotation
+
+      function step(ts) {
+        if (window.innerWidth <= 809) { lastTime = null; requestAnimationFrame(step); return; }
+        if (lastTime === null) lastTime = ts;
+        angle = (angle + DEG_PER_SEC * (ts - lastTime) / 1000) % 360;
+        lastTime = ts;
+        img.style.transform = 'rotate(' + angle + 'deg)';
+        requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    })();
+
+  </script>
 </body>
 </html>
