@@ -55,24 +55,29 @@
       flex-direction: column;
       align-items: stretch;
       overflow: hidden;
+      padding: 0 var(--gutter);
     }
     .ev-hero-body {
       flex: 1 1 0;
       min-height: 0;
       max-height: 100%;
-      overflow: hidden;
+      overflow: visible;
       display: grid;
       grid-template-columns: 1.15fr 1fr;
       align-items: stretch;
       gap: 0;
       max-width: 1440px;
       margin: 0 auto;
-      padding: 0 var(--gutter);
       width: 100%;
       box-sizing: border-box;
       position: relative;
       z-index: 2;
     }
+    /* Wide desktop (≥1536px): hero body locks to exactly 1440px */
+    @media (min-width: 1536px) {
+      .ev-hero-body { width: 1440px; }
+    }
+
     .ev-hero-text {
       display: flex;
       flex-direction: column;
@@ -917,7 +922,7 @@
       font-family: var(--f-body);
       font-size: 16px; line-height: 1.3;
       color: var(--color-white);
-      display: flex; align-items: center; gap: 12px;
+      display: flex; align-items: flex-start; gap: 12px;
     }
     .ev-who-list li::before {
       content: '';
@@ -967,14 +972,19 @@
     /* ── 7. Registration CTA ───────────────────────── */
     .ev-register {
       background: var(--navy);
-      padding: 0 var(--gutter);
       position: relative; overflow: hidden;
-      min-height: 540px; height: fit-content; display: flex; align-items: center;
+      min-height: 400px; height: fit-content;
+      padding: 0 var(--gutter);
+    }
+    .ev-register-frame {
+      max-width: 1440px;
+      margin: 0 auto;
+      position: relative; z-index: 2;
+      width: 100%;
     }
     .ev-register-inner {
-      max-width: 720px; margin: 0;
-      position: relative; z-index: 2;
-      padding: 90px 0;
+      max-width: 600px;
+      padding: 60px 0;
     }
     .ev-register h2 {
       font-family: var(--f-medium);
@@ -993,16 +1003,16 @@
     /* Right artwork — absolutely fills the right half of the section */
     .ev-register-art {
       position: absolute;
-      right: 0; top: 0;
-      height: 420px; width: 393px;
-      z-index: 1;
+      right: 0; top: 0; bottom: 0;
+      width: 55%;
       pointer-events: none;
+      overflow: hidden;
     }
     .ev-register-art img {
       display: block;
       width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: left center;
+      object-fit: contain;
+      object-position: right center;
     }
 
     /* ── Apple Design improvements ─────────────────────────────────
@@ -1122,10 +1132,11 @@
         height: auto;
         min-height: unset;
         max-height: unset;
-        overflow: visible;
+        overflow: hidden;
         grid-template-columns: unset;
-        padding: 100px var(--gutter) 0;
+        padding: 100px 0 0;
         gap: 0;
+        width: 100%;
       }
       .ev-hero-text { height: auto; gap: 0; }
       /* Flatten ev-hero-bottom so subtitle can be ordered between heading & buttons */
@@ -1290,12 +1301,12 @@
 
       /* Register */
       .ev-register {
-        flex-direction: column;
-        align-items: flex-start;
         min-height: unset;
-        padding: 0;
       }
-      .ev-register-inner { max-width: 100%; padding: 60px var(--gutter) 40px; }
+      .ev-register-frame {
+        min-height: unset;
+      }
+      .ev-register-inner { max-width: 100%; padding: 60px 0 40px; }
       .ev-register-art {
         display: block;
         position: relative;
@@ -1785,18 +1796,20 @@
 
     <!-- ── 7. Registration CTA ───────────────────────────────── -->
     <section class="ev-register" aria-labelledby="ev-reg-heading">
-      <div class="ev-register-inner">
-        <div class="ev-label ev-label--light ev-label--border-left" role="text">Registration</div>
-        <h2 id="ev-reg-heading">Join waitlist<br>or Become a Sponsor</h2>
-        <p>Connect, engage and showcase your organization</p>
-        <div class="ev-register-btns">
-          <a href="https://bluespectruminnovative.com/contact" class="btn-ev-wl">
-            JOIN THE WAITLIST
-            <span class="btn-ev-wl-arr" aria-hidden="true"><img src="Icons/Arrow.svg" alt="" width="14" height="14" /></span>
-          </a>
-          <a href="https://bluespectruminnovative.com/contact" class="btn-ev-sp">BECOME A SPONSOR</a>
+      <div class="ev-register-frame">
+        <div class="ev-register-inner">
+          <div class="ev-label ev-label--light ev-label--border-left" role="text">Registration</div>
+          <h2 id="ev-reg-heading">Join waitlist<br>or Become a Sponsor</h2>
+          <p>Connect, engage and showcase your organization</p>
+          <div class="ev-register-btns">
+            <a href="https://bluespectruminnovative.com/contact" class="btn-ev-wl">
+              JOIN THE WAITLIST
+              <span class="btn-ev-wl-arr" aria-hidden="true"><img src="Icons/Arrow.svg" alt="" width="14" height="14" /></span>
+            </a>
+            <a href="https://bluespectruminnovative.com/contact" class="btn-ev-sp">BECOME A SPONSOR</a>
+          </div>
         </div>
-      </div>
+      </div><!-- /.ev-register-frame -->
       <!-- Right: artwork fills the right half of the section -->
       <div class="ev-register-art" aria-hidden="true">
         <img src="Images/Event/Last CTA Image.png" alt="" />

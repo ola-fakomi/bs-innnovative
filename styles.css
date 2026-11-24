@@ -271,6 +271,7 @@ div { display: flex; flex-direction: column; }
   background: transparent;
   border-bottom: none;
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  padding: 0 var(--gutter);
 }
 .site-header.scrolled {
   background: rgba(7, 7, 7, 0.92);
@@ -283,9 +284,10 @@ div { display: flex; flex-direction: column; }
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  padding: 0 var(--gutter);
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0;
   position: relative;
 }
 .nav-logo img { height: 30px; width: auto; }
