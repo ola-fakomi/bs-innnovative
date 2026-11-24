@@ -9,26 +9,89 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Lenis required ───────────────────────────────────────────── */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+    /* ── Split-word animation spans ──────────────────────────────── */
+    .sw  { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .swi { display: inline-block; will-change: transform; }
+
+    /* ── Hero blueprint grid texture ─────────────────────────────── */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(66,200,244,0.038) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(66,200,244,0.038) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+      z-index: 0;
+      -webkit-mask-image: radial-gradient(ellipse 100% 65% at 50% 30%, black, transparent);
+      mask-image: radial-gradient(ellipse 100% 65% at 50% 30%, black, transparent);
+    }
+
+    /* ── Hero cursor-reactive glow ───────────────────────────────── */
+    .hero { --hgx: 50%; --hgy: 50%; }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(900px circle at var(--hgx) var(--hgy), rgba(66,200,244,0.09), transparent 55%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Keep content above decorative pseudo-elements */
+    .hero-inner, .hero-images { position: relative; z-index: 2; }
+
+    /* ── Card hover lifts (CSS, fine-pointer devices only) ───────── */
+    @media (hover: hover) {
+      .service-card {
+        transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+                    box-shadow 0.32s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 20px 48px rgba(13, 12, 63, 0.18);
+      }
+      .approach-card {
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .approach-card:hover { transform: translateY(-5px); }
+    }
+
+    /* ── Service card icon brightness on hover ───────────────────── */
+    .service-card-art svg {
+      transition: filter 0.3s ease;
+    }
+    .service-card:hover .service-card-art svg {
+      filter: brightness(1.4) drop-shadow(0 0 12px rgba(66,200,244,0.4));
+    }
+  </style>
 </head>
 <body>
 
   <!-- ── Header ─────────────────────────────────────────────── -->
   <header class="site-header" role="banner">
     <div class="nav-inner">
-      <a class="nav-logo" href="https://bluespectruminnovative.com/" aria-label="Bluespectrum Innovative — Home">
+      <a class="nav-logo" href="index.html" aria-label="Bluespectrum Innovative — Home">
         <img src="assets/logo.png" alt="Bluespectrum Innovative" height="40" />
       </a>
       <nav class="nav-links" aria-label="Main navigation">
         <ul role="list">
-          <li><a href="https://bluespectruminnovative.com/" class="active" aria-current="page">Home</a></li>
-          <li><a href="https://bluespectruminnovative.com/about">About</a></li>
-          <li><a href="https://bluespectruminnovative.com/services">Services</a></li>
-          <li><a href="https://bluespectruminnovative.com/community">Community</a></li>
+          <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="foundation.html">Community</a></li>
           <li><a href="events.html">Events</a></li>
-          <li><a href="https://bluespectruminnovative.com/contact">Contact Us</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
         </ul>
       </nav>
-      <a href="https://bluespectruminnovative.com/contact" class="nav-cta">Get in touch<span class="nav-cta-arr" aria-hidden="true"><img src="Icons/Arrow.svg" alt="" width="14" height="14" /></span></a>
+      <a href="contact.html" class="nav-cta">Get in touch<span class="nav-cta-arr" aria-hidden="true"><img src="Icons/Arrow.svg" alt="" width="14" height="14" /></span></a>
       <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
           <rect y="4"  width="24" height="2" rx="1" fill="currentColor"/>
@@ -48,12 +111,12 @@
     </button>
     <nav aria-label="Mobile navigation">
       <ul role="list">
-        <li><a href="https://bluespectruminnovative.com/" aria-current="page">Home</a></li>
-        <li><a href="https://bluespectruminnovative.com/about">About</a></li>
-        <li><a href="https://bluespectruminnovative.com/services">Services</a></li>
-        <li><a href="https://bluespectruminnovative.com/community">Community</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="foundation.html">Community</a></li>
         <li><a href="events.html">Events</a></li>
-        <li><a href="https://bluespectruminnovative.com/contact">Contact Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
     </nav>
   </dialog>
@@ -370,6 +433,15 @@
     </div><!-- /footer-inner -->
   </footer>
 
+  <!-- GSAP + ScrollTrigger + Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" crossorigin="anonymous"></script>
+  <script>
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
