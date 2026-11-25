@@ -980,7 +980,7 @@
       margin: 0 auto;
       display: flex;
       flex-direction: row;
-      align-items: stretch;
+      align-items: center;
       width: 100%;
     }
     .ev-register-inner {
@@ -1005,15 +1005,16 @@
     /* Right artwork — natural flex child */
     .ev-register-art {
       flex: 1;
-      min-height: 400px;
+      min-height: 500px;
       pointer-events: none;
       overflow: hidden;
     }
     .ev-register-art img {
       display: block;
-      width: 100%; height: 100%;
+      width: 100%; height: 500px;
       object-fit: contain;
       object-position: right center;
+      padding-right: 100px;
     }
 
     /* ── Apple Design improvements ─────────────────────────────────
