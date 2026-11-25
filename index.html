@@ -972,19 +972,21 @@
     /* ── 7. Registration CTA ───────────────────────── */
     .ev-register {
       background: var(--navy);
-      position: relative; overflow: hidden;
-      min-height: 400px; height: fit-content;
+      overflow: hidden;
       padding: 0 var(--gutter);
     }
     .ev-register-frame {
       max-width: 1440px;
       margin: 0 auto;
-      position: relative; z-index: 2;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
       width: 100%;
     }
     .ev-register-inner {
       max-width: 600px;
       padding: 60px 0;
+      flex-shrink: 0;
     }
     .ev-register h2 {
       font-family: var(--f-medium);
@@ -1000,11 +1002,10 @@
       margin: 0 0 32px;
     }
     .ev-register-btns { display: flex; flex-direction: row; align-items: center; gap: 14px; flex-wrap: wrap; }
-    /* Right artwork — absolutely fills the right half of the section */
+    /* Right artwork — natural flex child */
     .ev-register-art {
-      position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 55%;
+      flex: 1;
+      min-height: 400px;
       pointer-events: none;
       overflow: hidden;
     }
@@ -1300,17 +1301,12 @@
       .ev-onsite h2 { font-size: 28px; line-height: 1.1; }
 
       /* Register */
-      .ev-register {
-        min-height: unset;
-      }
       .ev-register-frame {
-        min-height: unset;
+        flex-direction: column;
       }
       .ev-register-inner { max-width: 100%; padding: 60px 0 40px; }
       .ev-register-art {
-        display: block;
-        position: relative;
-        right: auto; top: auto;
+        min-height: unset;
         width: 100%;
         height: 400px;
       }
@@ -1809,11 +1805,11 @@
             <a href="https://bluespectruminnovative.com/contact" class="btn-ev-sp">BECOME A SPONSOR</a>
           </div>
         </div>
+        <!-- Right: artwork sits alongside the content in the same flex row -->
+        <div class="ev-register-art" aria-hidden="true">
+          <img src="Images/Event/Last%20CTA%20Image.png" alt="" />
+        </div>
       </div><!-- /.ev-register-frame -->
-      <!-- Right: artwork fills the right half of the section -->
-      <div class="ev-register-art" aria-hidden="true">
-        <img src="Images/Event/Last CTA Image.png" alt="" />
-      </div>
     </section>
 
   </main>
